@@ -1,0 +1,1437 @@
+fileFormatVersion: 2
+guid: 44d83adf49393ca439902bd59a483aef
+timeCreated: 1454968176
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Sack
+    21300002: Coins Bronze
+    21300004: Coins silver
+    21300006: Coins Gold
+    21300008: Potion Blue
+    21300010: Potion Purple
+    21300012: Potion Red
+    21300014: Potion Green
+    21300016: Potion Yellow
+    21300018: Potion White
+    21300020: Chest 0
+    21300022: Chest 1
+    21300024: Chest 2
+    21300026: Chest 3
+    21300028: Chest 4
+    21300030: Chest 5
+    21300032: Chest 6
+    21300034: Chest 7
+    21300036: Chest 8
+    21300038: Quiver basic
+    21300040: Quiver Red
+    21300042: Quiver Yellow
+    21300044: Quiver Green
+    21300046: Bow Basic
+    21300048: Bow Hard
+    21300050: Bow Steel
+    21300052: Bow Glass
+    21300054: Bow Gold
+    21300056: Sword Short
+    21300058: Sword basic
+    21300060: Sword Steel
+    21300062: Sword Gold
+    21300064: Sword Glass
+    21300066: Sword Fire
+    21300068: Sword Obsidian
+    21300070: Shield Basic
+    21300072: Shield Hard
+    21300074: Shield Iron
+    21300076: Shield Steel
+    21300078: Shield bronze Quad
+    21300080: Shield Steel Quad
+    21300082: Shield Gold Quad
+    21300084: Shield Herb Checker
+    21300086: Shield Herb Vision
+    21300088: Shield Herb Scales
+    21300090: Shield Herb Gren
+    21300092: Sheild Herb Yellow
+    21300094: Shield Herb Skull
+    21300096: shild Herb Concrete
+    21300098: Rod Basic
+    21300100: Rod Twisted
+    21300102: Rod Druid
+    21300104: Rod Hard
+    21300106: Rod Fire
+    21300108: Rod Cold
+    21300110: Rod Cross Wood
+    21300112: Rod Cross Gold
+    21300114: Rod Tip Pink
+    21300116: Rod Tip Red
+    21300118: Rod Tip Blue
+    21300120: Rod Ice
+    21300122: Rod Nature
+    21300124: Rod Star
+    21300126: Set Basic Helmet
+    21300128: Set Chain Helmet
+    21300130: Set Green Helmet
+    21300132: Set Steel Helmet
+    21300134: Set Gold Helmet
+    21300136: Set Red Helmet
+    21300138: Set Blue Helmet
+    21300140: Set Random Helmet
+    21300142: Cap Black
+    21300144: Cap Blue
+    21300146: Cap Red
+    21300148: Cap Green
+    21300150: Set Basic Armor
+    21300152: Set Chain Armor
+    21300154: Set Green Armor
+    21300156: Set Steel Armor
+    21300158: Set Gold Armor
+    21300160: Set Red Armor
+    21300162: Set Blue Armor
+    21300164: Set Random Armor
+    21300166: Set Black Armor
+    21300168: Set Royal Armor
+    21300170: Cloak Brown
+    21300172: Cloak Blue
+    21300174: Cloak Green
+    21300176: Cloak Yellow
+    21300178: Cloak Red
+    21300180: Cloak Brown Hard
+    21300182: Cloak Purple
+    21300184: Cloak Black
+    21300186: Set Basic Pants
+    21300188: Set Chain Pants
+    21300190: Set Green Pants
+    21300192: Set Steel Pants
+    21300194: Set Gold Pants
+    21300196: Set Red Pants
+    21300198: Set Blue Pants
+    21300200: Set Random Pants
+    21300202: Set Black Pants
+    21300204: Set Royal Pants
+    21300206: Pants Jungle
+    21300208: Set Basic Shoes
+    21300210: Set Chain Shoes
+    21300212: Set Green Shoes
+    21300214: Set Steel Shoes
+    21300216: Set Gold Shoes
+    21300218: Set Red Shoes
+    21300220: Set Blue Shoes
+    21300222: Set Random Shoes
+    21300224: Set Black Shoes
+    21300226: Set Royal Shoes
+    21300228: Shoes Lether
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Sack
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Coins Bronze
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Coins silver
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Coins Gold
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion Blue
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion Purple
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion Red
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion Green
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion Yellow
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Potion White
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 478
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 2
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 5
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 6
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 7
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Chest 8
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 495
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Quiver basic
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Quiver Red
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Quiver Yellow
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Quiver Green
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bow Basic
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bow Hard
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bow Steel
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bow Glass
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bow Gold
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 461
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Short
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword basic
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Steel
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Gold
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Glass
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Fire
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sword Obsidian
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 444
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Basic
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Hard
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Iron
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Steel
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield bronze Quad
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Steel Quad
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Gold Quad
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Herb Checker
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Herb Vision
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Herb Scales
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Herb Gren
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sheild Herb Yellow
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shield Herb Skull
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shild Herb Concrete
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 427
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Basic
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Twisted
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Druid
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Hard
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Fire
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Cold
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Cross Wood
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Cross Gold
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Tip Pink
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Tip Red
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Tip Blue
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Ice
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Nature
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Rod Star
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 410
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Basic Helmet
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Chain Helmet
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Green Helmet
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Steel Helmet
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Gold Helmet
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Red Helmet
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Blue Helmet
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Random Helmet
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cap Black
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cap Blue
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cap Red
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cap Green
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 393
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Basic Armor
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Chain Armor
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Green Armor
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Steel Armor
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Gold Armor
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Red Armor
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Blue Armor
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 377
+        width: 16
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Random Armor
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 377
+        width: 16
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Black Armor
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 377
+        width: 16
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Royal Armor
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 377
+        width: 16
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Brown
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Blue
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Green
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Yellow
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Red
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Brown Hard
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Purple
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Cloak Black
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 376
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Basic Pants
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Chain Pants
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Green Pants
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Steel Pants
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Gold Pants
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Red Pants
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Blue Pants
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Random Pants
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Black Pants
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Royal Pants
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Pants Jungle
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 359
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Basic Shoes
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Chain Shoes
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Green Shoes
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Steel Shoes
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Gold Shoes
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Red Shoes
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Blue Shoes
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Random Shoes
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Black Shoes
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Set Royal Shoes
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Shoes Lether
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 342
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

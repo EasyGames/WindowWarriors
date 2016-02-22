@@ -1,0 +1,412 @@
+fileFormatVersion: 2
+guid: 4d98fedefe144b24593e5e93f3456600
+timeCreated: 1453147170
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: testhero0
+    21300002: testhero1
+    21300004: testhero2
+    21300006: testhero3
+    21300008: slime_idle0
+    21300010: slime_idle1
+    21300012: slime_idle2
+    21300014: slime_idle3
+    21300016: slime_idle4
+    21300018: hero_Warrior01
+    21300020: hero_Warrior02
+    21300022: hero_Warrior03
+    21300024: hero_Warrior04
+    21300026: BaseCharacters_4
+    21300028: hero_rouge01
+    21300030: hero_rouge02
+    21300032: hero_rouge03
+    21300034: hero_rouge04
+    21300036: BaseCharacters_9
+    21300038: hero_archer01
+    21300040: hero_archer02
+    21300042: hero_mage01
+    21300044: hero_mage02
+    21300046: hero_priest01
+    21300048: hero_priest02
+    21300050: hero_druid01
+    21300052: hero_druid02
+    21300054: hero_viking01
+    21300056: hero_viking02
+    21300058: hero_fencer01
+    21300060: hero_fencer02
+    21300062: BaseCharacters_22
+    21300064: Hero_idle
+    21300066: BaseCharacters_23
+    21300068: BaseCharacters_24
+    21300070: BaseCharacters_25
+    21300072: BaseCharacters_26
+    21300074: BaseCharacters_27
+    21300076: Tombstone
+    21300078: Grave
+    21300080: hero_archer03
+    21300082: hero_archer04
+    21300084: hero_archer05
+    21300086: hero_archer06
+    21300088: hero_archer07
+    21300090: hero_archer08
+    21300092: Arrow
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 1
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 24
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hero_Warrior01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 999
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_Warrior02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 999
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_Warrior03
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 999
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_Warrior04
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 999
+        width: 32
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_rouge01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 974
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_rouge02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 974
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_rouge03
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 974
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_rouge04
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 974
+        width: 33
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 949
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 949
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_mage01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 924
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_mage02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 924
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_priest01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 899
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_priest02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 899
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_druid01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 874
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_druid02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 874
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_viking01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 849
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_viking02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 849
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_fencer01
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 824
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_fencer02
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 824
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Grave
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer03
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 949
+        width: 25
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer04
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 949
+        width: 26
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer05
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 949
+        width: 26
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer06
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 949
+        width: 25
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer07
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 949
+        width: 35
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: hero_archer08
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 949
+        width: 51
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Arrow
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 957
+        width: 17
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
