@@ -16,6 +16,7 @@ public class Level01 : WindowBase {
 
     void OnMouseUp()
     {
+        print("click");
         if (!inventoryWindow.isInventoryFull())
         {
             GameObject inventorySlot;
