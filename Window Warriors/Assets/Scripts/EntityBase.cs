@@ -10,18 +10,18 @@ public class EntityBase : MonoBehaviour {
 
     //Hero class
     public heroClass myClass;
-    public int finalDMG;
+    public int finalDMG { get; set; }
 
     // Archer arrow delegate
     public delegate void ArrowDelegate();
     public ArrowDelegate arrowDelegate;
 
     //Tile size
-    public int tileSize = 16;
+    public int tileSize { get; set; }
 
     // Animation
-    public Animator animator;
-    public bool walking;
+    public Animator animator { get; set; }
+    public bool walking { get; set; }
 
     // list of enemies
     public List<EntityBase> enemiesList = new List<EntityBase>();
@@ -29,17 +29,17 @@ public class EntityBase : MonoBehaviour {
     EntityBase enemyScript;
 
     // Health bar
-    public Color orange = new Color(200.0f / 255.0f, 130.0f / 255.0f, 40.0f/255.0f, 1);
-    public Vector3 targetPos;
-    public Vector3 worldPos;
-    public int lifeHeight;
-    public int lifeWidth;
-    public bool drawGUI = true;
+    public Color orange { get; set; }
+    public Vector3 targetPos { get; set; }
+    public Vector3 worldPos { get; set; }
+    public int lifeHeight { get; set; }
+    public int lifeWidth { get; set; }
+    public bool drawGUI { get; set; }
 
     //Base Stats
     public int Level = 1;
-    public int XP = 0;
-    public int XPTreshold;
+    public int XP { get; set; }
+    public int XPTreshold { get; set; }
 
     // Statistics
     public float life;
@@ -51,17 +51,21 @@ public class EntityBase : MonoBehaviour {
     public int Charisma = 10;
     public int Inteligence = 10;
     public int Wisdom = 10;
-    public int criticalChance;
-    public int dodgeChance;
+    public int criticalChance { get; set; }
+    public int dodgeChance { get; set; }
 
     // Floating Text
-    public GameObject textGameObject;
-    TextMesh floatingText;
-    RectTransform canvasTransform;
-    List<GameObject> floatingTextsGO;
+    public GameObject textGameObject { get; set; }
+    TextMesh floatingText { get; set; }
+    RectTransform canvasTransform { get; set; }
+    List<GameObject> floatingTextsGO { get; set; }
 
     public virtual void Awake()
     {
+        tileSize = 16;
+        orange = new Color(200.0f / 255.0f, 130.0f / 255.0f, 40.0f / 255.0f, 1);
+        drawGUI = true;
+        XP = 0;
         floatingTextsGO = new List<GameObject>();
         worldPos = transform.position + Vector3.right;
         life = Endurance * 10;
@@ -117,6 +121,20 @@ public class EntityBase : MonoBehaviour {
     public virtual void LevelUp()
     {
         Level++;
+        refreshHealth();
+    }
+
+    void refreshHealth()
+    {
+        maxLife = Endurance * 10;
+        if (maxLife - life > 10)
+        {
+            life += 10;
+        }
+        else
+        {
+            life += maxLife - life;
+        }
     }
 
     // Get the enemy entity and add it to the list

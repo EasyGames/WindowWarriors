@@ -17,15 +17,6 @@ public class TestHeroScript : HeroBase {
         if (Level % 2 == 0)
         {
             Endurance++;
-            maxLife = Endurance * 10;
-            if (maxLife - life > 10)
-            {
-                life += 10;
-            }
-            else
-            {
-                life += maxLife - life;
-            }
         }
         if (Level % 3 == 0)
         {

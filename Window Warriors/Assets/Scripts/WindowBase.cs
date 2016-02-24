@@ -5,22 +5,22 @@ using System.Collections.Generic;
 public class WindowBase : MonoBehaviour {
 
     // Window event variables
-    public int addWaves= 2;
-    public int currentWave = 0;
+    public int addWaves { get; set; }
+    public int currentWave { get; set; }
     public int wavesToBeFinished;
     public Vector3 targetPos;
     Vector2 rectSize = new Vector2(50,20);
     float WindowHeight;
     float peviousTime;
-    public bool windowCleared;
-    public bool isHeroResting;
-    public bool doOnce = true;
+    public bool windowCleared { get; set; }
+    public bool isHeroResting { get; set; }
+    public bool doOnce { get; set; }
     public GameObject reward;
     public int rewardAmount;
     public HeroMenu heroMenu;
-    public bool showTimer = false;
-    public float raidTime;
-    public float lastRaidTime;
+    public bool showTimer { get; set; } 
+    public float raidTime { get; set; }
+    public float lastRaidTime { get; set; }
 
     // Money manager Script
     public MoneyManager moneyManager;
@@ -37,9 +37,9 @@ public class WindowBase : MonoBehaviour {
     Vector3 heroMaximized = new Vector3(1.0f, 1.0f, 1.0f);
     public enum windowState {minimized, maximized};
     public windowState currentState { get; set; }
-    public MeshRenderer thisRenderer;
+    public MeshRenderer thisRenderer { get; set; }
     public PlaceMarker marker;
-    public bool doOnlyOnce = true;
+    public bool doOnlyOnce { get; set; }
     
     // Background of this window and it's scrolling
     public Sprite background;
@@ -48,27 +48,20 @@ public class WindowBase : MonoBehaviour {
     float offset;
 
     // Heros list
-    public List<EntityBase> herosList
-    {
-        get; set;
-    }
+    public List<EntityBase> herosList {get; set;}
     public int maxNumberOfHeros = 3;
 
     // Enemies list and objecs
-    public Vector3 position
-    {
-        get; set;
-    }
-    public EntityBase enemy
-    {
-        get; set;
-    }
-    public List<EntityBase> enemiesList
-    {
-        get; set;
-    }
+    public Vector3 position { get; set;}
+    public EntityBase enemy { get; set;}
+    public List<EntityBase> enemiesList { get; set;}
 
     public virtual void Start () {
+        addWaves = 2;
+        currentWave = 0;
+        doOnce = true;
+        showTimer = false;
+        doOnlyOnce = true;
 
         // Posotion to display GUI
         WindowHeight = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, transform.localScale.y/2, 0)).y - Camera.main.WorldToScreenPoint(transform.position).y;
