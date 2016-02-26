@@ -65,7 +65,7 @@ public class Level01 : WindowBase {
             showTimer = false;
         }
 
-        if (!isThereEnemy() && herosList.Count > 0 && herosList[0].life > 0 && !windowCleared && !isHeroResting)
+        if (!isThereEnemy() && herosList.Count > 0 && isThereHeroAlive() && !windowCleared && !isHeroResting)
         {
             if (doOnce)
             {
