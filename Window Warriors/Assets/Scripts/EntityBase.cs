@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 //Hero class
-public enum heroClass { All, Warrior, Archer, Mage  };
+public enum heroClass { All, Warrior, Archer, Mage, Monk, Rogue };
 
 public class EntityBase : MonoBehaviour {
 

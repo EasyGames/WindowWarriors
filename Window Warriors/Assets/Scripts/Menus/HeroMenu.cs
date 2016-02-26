@@ -55,7 +55,7 @@ public class HeroMenu: WindowBase{
         }
         panelRect.position = transform.position + Vector3.up * transform.localScale.y*3f - Vector3.right*9;
         unlockHero("Dannyl", "warrior");
-        unlockHero("Rouge", "rouge");
+		unlockHero("Olaf", "monk");
 
     }
 
