@@ -13,7 +13,6 @@ public class DragScript : MonoBehaviour {
     LayerMask heroLayer = 1 << 8;
     LayerMask ignoreHeroLayer;
     Vector3 originalPosition;
-    Vector3 dockPosition;
 
     // monster manager with script
     GameObject previousWindow;
@@ -33,8 +32,11 @@ public class DragScript : MonoBehaviour {
 
     // Float for telling apart drag from click.
     float timeToDrag;
-    bool checkForDrag = true; 
+    bool checkForDrag = true;
 
+    // hero position in window
+    enum heroPosition { position1, position2, position3, none };
+    int indexToAddHero;
 
 
 
@@ -141,27 +143,88 @@ public class DragScript : MonoBehaviour {
                 currentWindowBaseScript = hit.collider.GetComponent<WindowBase>();
                 if (currentWindowBaseScript.maxNumberOfHeros == currentWindowBaseScript.herosList.Count)
                 {
-                    previousWidowBaseScript.addHero(heroScript);
-                }
-                else
-                {
-                    if (currentWindowBaseScript == previousWidowBaseScript)
+                    if (indexToAddHero == -1)
                     {
-
+                        previousWidowBaseScript.addHero(heroScript);
                     }
                     else
                     {
-                        if (previousWidowBaseScript.herosList.Count <= 0)
-                        {
-                            previousWidowBaseScript.doOnce = true;
-                            previousWidowBaseScript.currentWave = 0;
-                        }
-                        else
-                        {
-                            previousWidowBaseScript.currentWave = 1;
-                        }
+                        EntityBase previousHero = currentWindowBaseScript.herosList[indexToAddHero];
+                        previousHero.transform.parent.GetComponent<DragScript>().currentWindowBaseScript = mainDock;
+                        previousHero.transform.parent.GetComponent<DragScript>().previousWidowBaseScript = currentWindowBaseScript;
+                        currentWindowBaseScript.herosList[indexToAddHero] = heroScript;
+                        currentWindowBaseScript.refreshHeroPositions();
+                        mainDock.addHero(previousHero);
+                        print("index to add" + indexToAddHero);
                     }
-                    transform.position = hit.collider.transform.position - Vector3.right * 3 - Vector3.up * 0.8f;
+                }
+                else
+                {
+
+                    if (indexToAddHero != -1)
+                    {
+                        switch (indexToAddHero)
+                        {
+                            case 2:
+                                break;
+                            case 1:
+                                if (currentWindowBaseScript.herosList.Count > 1)
+                                {
+                                    if (currentWindowBaseScript.herosList[1] != null)
+                                    {
+                                        EntityBase middlePositionHero = currentWindowBaseScript.herosList[1];
+                                        currentWindowBaseScript.herosList.Insert(2, middlePositionHero);
+                                    }
+                                    currentWindowBaseScript.herosList[1] = heroScript;
+                                }
+                                else
+                                {
+                                    currentWindowBaseScript.herosList.Insert(1, heroScript);
+                                }
+                            
+                                break;
+                            case 0:
+                                if (currentWindowBaseScript.herosList.Count > 1)
+                                {
+                                    if (currentWindowBaseScript.herosList[1] != null)
+                                    {
+                                        EntityBase middlePositionHero = currentWindowBaseScript.herosList[1];
+                                        currentWindowBaseScript.herosList.Insert(2, middlePositionHero);
+
+                                        EntityBase firstPositionHero = currentWindowBaseScript.herosList[0];
+                                        currentWindowBaseScript.herosList[1] = firstPositionHero;
+                                    }
+                                    currentWindowBaseScript.herosList[0] = heroScript;
+                                }
+                                else if (currentWindowBaseScript.herosList.Count > 0)
+                                {
+                                    if (currentWindowBaseScript.herosList[0] != null)
+                                    {
+                                        EntityBase firstPositionHero = currentWindowBaseScript.herosList[0];
+                                        currentWindowBaseScript.herosList.Insert(1,firstPositionHero);
+                                    }
+                                    currentWindowBaseScript.herosList[0] = heroScript;
+                                }
+                                else
+                                {
+                                    currentWindowBaseScript.herosList.Insert(0, heroScript);
+                                }
+                                break;
+                        }
+                        currentWindowBaseScript.refreshHeroPositions();
+                    }
+                    if (currentWindowBaseScript == previousWidowBaseScript)
+                    {
+                            if (previousWidowBaseScript.herosList.Count <= 0)
+                            {
+                                previousWidowBaseScript.doOnce = true;
+                                previousWidowBaseScript.currentWave = 0;
+                            }
+                            else
+                            {
+                                previousWidowBaseScript.currentWave = 1;
+                            }
+                    }
                     currentWindowBaseScript.addHero(heroScript);
                     heroScript.setEnemies(currentWindowBaseScript.getEnemies());
                 }
@@ -179,8 +242,37 @@ public class DragScript : MonoBehaviour {
     {
         if (dragging)
         {
+            heroPosition currentPosition = heroPosition.none;
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance-10);
             transform.position = Camera.main.ScreenToWorldPoint(position) - Vector3.up *0.5f - Vector3.right*0.5f;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100,ignoreHeroLayer))
+            {
+                if (hit.collider.tag == "Window")
+                {
+                    Vector3 positionDifference = hit.collider.transform.position - hit.point;
+
+                    if (positionDifference.x >= 4.4f && currentPosition != heroPosition.position3)
+                    {
+                        currentPosition = heroPosition.position3;
+                        indexToAddHero = 2;
+                    }
+                    else if(positionDifference.x >= 3.2f && positionDifference.x < 4.4f && currentPosition != heroPosition.position3)
+                    {
+                        currentPosition = heroPosition.position2;
+                        indexToAddHero = 1;
+                    }
+                    else if(positionDifference.x < 3.2f && currentPosition != heroPosition.position3)
+                    {
+                        currentPosition = heroPosition.position1;
+                        indexToAddHero = 0;
+                    }
+                }
+                else
+                {
+                    currentPosition = heroPosition.none;
+                    indexToAddHero = -1;
+                }
+            }
         }
     }
 

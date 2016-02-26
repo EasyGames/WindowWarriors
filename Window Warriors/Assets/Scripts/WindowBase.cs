@@ -109,12 +109,7 @@ public class WindowBase : MonoBehaviour {
         {
             herosList.Add(hero);
         }
-
-        for(int i=0; i < herosList.Count; i++)
-        {
-            herosList[i].gameObject.transform.parent.position = transform.position -Vector3.right*i*1.2f - Vector3.right*3- Vector3.up * 0.8f;
-        }
-
+        refreshHeroPositions();
         sendEnemies();
     }
 
@@ -125,9 +120,19 @@ public class WindowBase : MonoBehaviour {
         {
             herosList.Remove(hero);
         }
+        refreshHeroPositions();
+        sendEnemies();
+    }
+
+    // Refresh the positions on which heros are located;
+    public void refreshHeroPositions()
+    {
         for (int i = 0; i < herosList.Count; i++)
         {
-            herosList[i].gameObject.transform.parent.position = transform.position - Vector3.right * i*1.2f - Vector3.right * 3 - Vector3.up * 0.8f;
+            if (herosList[i] != null)
+            {
+                herosList[i].gameObject.transform.parent.position = transform.position - Vector3.right * i * 1.2f - Vector3.right * 3 - Vector3.up * 0.8f;
+            }
         }
         sendEnemies();
     }
