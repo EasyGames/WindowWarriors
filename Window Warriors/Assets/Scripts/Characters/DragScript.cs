@@ -161,7 +161,7 @@ public class DragScript : MonoBehaviour {
                 else
                 {
 
-                    if (indexToAddHero != -1)
+                    if (indexToAddHero != -1 && currentWindowBaseScript.herosList.Count >0)
                     {
                         switch (indexToAddHero)
                         {
@@ -213,6 +213,10 @@ public class DragScript : MonoBehaviour {
                         }
                         currentWindowBaseScript.refreshHeroPositions();
                     }
+                    else
+                    {
+                        currentWindowBaseScript.addHero(heroScript);
+                    }
                     if (currentWindowBaseScript == previousWidowBaseScript)
                     {
                             if (previousWidowBaseScript.herosList.Count <= 0)
@@ -247,7 +251,7 @@ public class DragScript : MonoBehaviour {
             transform.position = Camera.main.ScreenToWorldPoint(position) - Vector3.up *0.5f - Vector3.right*0.5f;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100,ignoreHeroLayer))
             {
-                if (hit.collider.tag == "Window")
+                if (hit.collider.tag == "Window" && hit.collider.GetComponent<WindowBase>() != mainDock)
                 {
                     Vector3 positionDifference = hit.collider.transform.position - hit.point;
 
