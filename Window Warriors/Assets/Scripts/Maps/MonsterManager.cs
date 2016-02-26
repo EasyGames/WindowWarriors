@@ -18,7 +18,7 @@ public class MonsterManager : WindowBase {
     {
         if (windowCleared)
         {
-            if ((addWaves - 1) % 6 == 0 && addWaves >= 6)
+            if ((addWaves - 1) % 1 == 0 && addWaves >= 1)
             {
                 heroMenu.unlockHero("Tomo","wizzard");
             }

@@ -54,6 +54,7 @@ public class ItemSlotScript : ItemBase {
     // ending the drag and checking for item swap
     void OnMouseUp()
     {
+        HeroBase currentlySelectedHero = (HeroBase)heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, ignoreHeroLayer))
         {
@@ -74,8 +75,7 @@ public class ItemSlotScript : ItemBase {
                         clearItemSlot();
                     }
                     else if(otherSlot.currentItemType != itemType.Any
-                        && (heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass == itemInTheSlot.GetComponent<ItemBase>().itemClass
-                        || itemInTheSlot.GetComponent<ItemBase>().itemClass == heroClass.All))
+                        && compareItemToHeroClass(currentlySelectedHero, itemInTheSlot))
                     {
                         otherSlot.receiveItem(itemInTheSlot);
                         clearItemSlot();
@@ -88,7 +88,7 @@ public class ItemSlotScript : ItemBase {
                 {
                     print(heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass);
                     if (otherSlot.currentItemType == itemType.Any 
-                        && otherSlot.itemInTheSlot.GetComponent<ItemBase>().itemClass == heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass)
+                        && otherSlot.itemInTheSlot.GetComponent<ItemBase>().primaryItemClass == heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass)
                     {
                         GameObject otherSlotItem;
                         otherSlotItem = otherSlot.itemInTheSlot;
@@ -96,8 +96,7 @@ public class ItemSlotScript : ItemBase {
                         this.receiveItem(otherSlotItem);
                     }
                     else if (otherSlot.currentItemType != itemType.Any
-                        && (heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass == itemInTheSlot.GetComponent<ItemBase>().itemClass
-                        || itemInTheSlot.GetComponent<ItemBase>().itemClass == heroClass.All))
+                        && compareItemToHeroClass(currentlySelectedHero, itemInTheSlot))
                     {
                         GameObject otherSlotItem;
                         otherSlotItem = otherSlot.itemInTheSlot;
@@ -119,6 +118,22 @@ public class ItemSlotScript : ItemBase {
         transform.SetParent(myParent.transform);
         transform.position = originalPosition;
 
+    }
+
+    // returns true if item fits the given slot
+
+    bool compareItemToHeroClass(HeroBase heroScript, GameObject item)
+    {
+        ItemBase itemScript = item.GetComponent<ItemBase>();
+        if ((heroScript.myClass == itemScript.primaryItemClass || heroScript.myClass == itemScript.secondaryItemClass) 
+            || (itemScript.primaryItemClass == heroClass.All 
+            && (heroScript.myClass != itemScript.primaryExceptItemClass && heroScript.myClass != itemScript.secondaryExceptItemClass)))
+        {
+            print("True");
+            return true;
+        }
+        print("false");
+        return false;
     }
 	
 	// Update is called once per frame
@@ -222,14 +237,14 @@ public class ItemSlotScript : ItemBase {
 
     public void equipReplaceItem(GameObject item)
     {
+        HeroBase currentlySelectedHero = (HeroBase)heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript;
         if (item != null)
         {
             foreach (GameObject charSlot in inventoryWindow.characterSlots)
             {
                 if ((item.GetComponent<ItemBase>().currentItemType == charSlot.GetComponent<ItemSlotScript>().currentItemType)
                     && charSlot.GetComponent<ItemSlotScript>().isSlotEmpty()
-                    && ( itemInTheSlot.GetComponent<ItemBase>().itemClass == heroClass.All
-                    ||heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass == itemInTheSlot.GetComponent<ItemBase>().itemClass))
+                    && (compareItemToHeroClass(currentlySelectedHero, itemInTheSlot)))
                 {
                     charSlot.GetComponent<ItemSlotScript>().receiveItem(item);
                     clearItemSlot();
@@ -241,8 +256,7 @@ public class ItemSlotScript : ItemBase {
             foreach (GameObject charSlot in inventoryWindow.characterSlots)
             {
                 if (item.GetComponent<ItemBase>().currentItemType == charSlot.GetComponent<ItemSlotScript>().currentItemType
-                    && (itemInTheSlot.GetComponent<ItemBase>().itemClass == heroClass.All
-                    || heroMenu.currentlySlecetedShadow().GetComponent<ShadowScript>().shadowedScript.myClass == itemInTheSlot.GetComponent<ItemBase>().itemClass))
+                    && compareItemToHeroClass(currentlySelectedHero, itemInTheSlot))
                 {
                     GameObject otherSlotItem;
                     otherSlotItem = charSlot.GetComponent<ItemSlotScript>().itemInTheSlot;

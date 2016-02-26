@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestHeroScript : HeroBase {
+public class WarriorScript : HeroBase {
 
     public AnimationClip cutEffect;
 
@@ -12,11 +12,10 @@ public class TestHeroScript : HeroBase {
 
     public override void LevelUp()
     {
-        
         strength++;
         if (Level % 2 == 0)
         {
-            Endurance++;
+            endurance++;
         }
         if (Level % 3 == 0)
         {
@@ -24,7 +23,7 @@ public class TestHeroScript : HeroBase {
         }
         if (Level % 4 == 0)
         {
-            Charisma++;
+            charisma++;
         }
         base.LevelUp();
     }

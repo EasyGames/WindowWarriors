@@ -8,7 +8,7 @@ public class WindowBase : MonoBehaviour {
     public int addWaves { get; set; }
     public int currentWave { get; set; }
     public int wavesToBeFinished;
-    public Vector3 targetPos;
+    public Vector3 targetPos { get; set; }
     Vector2 rectSize = new Vector2(50,20);
     float WindowHeight;
     float peviousTime;

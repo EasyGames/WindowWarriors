@@ -74,10 +74,10 @@ public class ShadowScript : MonoBehaviour {
                 "\nStrength: " + shadowedScript.strength +
                 "\nAgility: " + shadowedScript.agility +
                 "\nSpeed: " + shadowedScript.speed +
-                "\nEndurance: " + shadowedScript.Endurance +
-                "\nInteligence: " + shadowedScript.Inteligence +
-                "\nWisdom: " + shadowedScript.Wisdom +
-                "\nCharisma: " + shadowedScript.Charisma;
+                "\nEndurance: " + shadowedScript.endurance +
+                "\nInteligence: " + shadowedScript.inteligence +
+                "\nWisdom: " + shadowedScript.wisdom +
+                "\nCharisma: " + shadowedScript.charisma;
                 panelText.GetComponent<Text>().text = stats;
             if (currentEquipment[0] != null)
             {

@@ -104,7 +104,7 @@ public class Trollololo : HeroBase {
         }
         if (Level % 4 == 0)
         {
-            Endurance++;
+            endurance++;
         }
     }
 

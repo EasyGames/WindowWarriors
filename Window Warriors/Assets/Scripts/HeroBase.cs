@@ -28,24 +28,11 @@ public class HeroBase : EntityBase
         base.Awake();
         animator = GetComponent<Animator>();
         currentState = state.Walking;
-
-        finalDMG = strength;
-        for(int i= 1; i< currentEquipment.Length; i++)
-        {
-            if (currentEquipment[i] != null)
-            {
-                if (currentEquipment[i].GetComponent<ItemBase>().additionalDmg > 0)
-                {
-                    finalDMG += currentEquipment[i].GetComponent<ItemBase>().additionalDmg;
-                }
-            }
-        }
     }
 
-    public override void LevelUp()
+    public override void recalculateDMG()
     {
-        Level++;
-        finalDMG = strength;
+        base.recalculateDMG();
         for (int i = 1; i < currentEquipment.Length; i++)
         {
             if (currentEquipment[i] != null)

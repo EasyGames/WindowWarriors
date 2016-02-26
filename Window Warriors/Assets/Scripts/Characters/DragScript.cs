@@ -197,10 +197,10 @@ public class DragScript : MonoBehaviour {
             "\nStrength: " + transform.GetChild(0).GetComponent<EntityBase>().strength +
             "\nAgility: " + transform.GetChild(0).GetComponent<EntityBase>().agility +
             "\nSpeed: " + transform.GetChild(0).GetComponent<EntityBase>().speed +
-            "\nEndurance: " + transform.GetChild(0).GetComponent<EntityBase>().Endurance +
-            "\nInteligence: " + transform.GetChild(0).GetComponent<EntityBase>().Inteligence +
-            "\nWisdom: " + transform.GetChild(0).GetComponent<EntityBase>().Wisdom +
-            "\nCharisma: " + transform.GetChild(0).GetComponent<EntityBase>().Charisma;
+            "\nEndurance: " + transform.GetChild(0).GetComponent<EntityBase>().endurance +
+            "\nInteligence: " + transform.GetChild(0).GetComponent<EntityBase>().inteligence +
+            "\nWisdom: " + transform.GetChild(0).GetComponent<EntityBase>().wisdom +
+            "\nCharisma: " + transform.GetChild(0).GetComponent<EntityBase>().charisma;
             Vector2 positionGUI = Camera.main.WorldToScreenPoint(transform.position);
             GUI.Box(new Rect(positionGUI.x, Screen.height- positionGUI.y, 150, 200), stats);
         }
@@ -209,16 +209,6 @@ public class DragScript : MonoBehaviour {
 
     public void recalcualteDMG()
     {
-        heroScript.finalDMG = heroScript.strength;
-        for (int i = 1; i < heroScript.GetComponent<HeroBase>().currentEquipment.Length; i++)
-        {
-            if (heroScript.GetComponent<HeroBase>().currentEquipment[i] != null)
-            {
-                if (heroScript.GetComponent<HeroBase>().currentEquipment[i].GetComponent<ItemBase>().additionalDmg > 0)
-                {
-                    heroScript.finalDMG += heroScript.GetComponent<HeroBase>().currentEquipment[i].GetComponent<ItemBase>().additionalDmg;
-                }
-            }
-        }
+        heroScript.recalculateDMG();
     }
 }

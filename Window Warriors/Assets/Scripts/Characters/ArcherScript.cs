@@ -81,16 +81,7 @@ public class ArcherScript : HeroBase {
         }
         if (Level%4 == 0)
         {
-            Endurance++;
-            maxLife = Endurance * 10;
-            if (maxLife - life > 10)
-            {
-                life += 10;
-            }
-            else
-            {
-                life += maxLife - life;
-            }
+            endurance++;
         }
         base.LevelUp();
     }

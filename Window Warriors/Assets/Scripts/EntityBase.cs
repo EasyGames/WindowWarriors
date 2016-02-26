@@ -10,6 +10,9 @@ public class EntityBase : MonoBehaviour {
 
     //Hero class
     public heroClass myClass;
+    public enum MainAtribiute {Strength, Agility, Inteligence, Wisdom, Charisma, Speed };
+    public MainAtribiute mainAttribiute;
+
     public int finalDMG { get; set; }
 
     // Archer arrow delegate
@@ -47,10 +50,10 @@ public class EntityBase : MonoBehaviour {
     public int strength = 10;
     public int speed = 10;
     public int agility= 10;
-    public int Endurance= 10;
-    public int Charisma = 10;
-    public int Inteligence = 10;
-    public int Wisdom = 10;
+    public int endurance= 10;
+    public int charisma = 10;
+    public int inteligence = 10;
+    public int wisdom = 10;
     public int criticalChance { get; set; }
     public int dodgeChance { get; set; }
 
@@ -68,10 +71,10 @@ public class EntityBase : MonoBehaviour {
         XP = 0;
         floatingTextsGO = new List<GameObject>();
         worldPos = transform.position + Vector3.right;
-        life = Endurance * 10;
+        life = endurance * 10;
         maxLife = life;
         XPTreshold = (Level == 1) ? 100 : (100 * (2 ^ (Level - 1)));
-        finalDMG = strength;
+        recalculateDMG();
     }
 
     public virtual void FixedUpdate()
@@ -96,6 +99,7 @@ public class EntityBase : MonoBehaviour {
         }
     }
 
+    // Destroy all of the floating texts
     public void clearFloatingTexts()
     {
         foreach(GameObject floatingText in floatingTextsGO)
@@ -108,25 +112,29 @@ public class EntityBase : MonoBehaviour {
         floatingTextsGO.Clear();
     }
 
+    // Get xp and possibly level up
     public void GetXP(int XPToGet)
     {
         XP += XPToGet;
         if (XP >= XPTreshold)
         {
             LevelUp();
+            refreshHealth();
+            recalculateDMG();
             XPTreshold *= 2;
         }
     }
 
+    // LEvel up hero
     public virtual void LevelUp()
     {
         Level++;
-        refreshHealth();
     }
 
-    void refreshHealth()
+    // Refresh the health amount
+    public void refreshHealth()
     {
-        maxLife = Endurance * 10;
+        maxLife = endurance * 10;
         if (maxLife - life > 10)
         {
             life += 10;
@@ -135,6 +143,34 @@ public class EntityBase : MonoBehaviour {
         {
             life += maxLife - life;
         }
+    }
+
+    // Recalculate the damge
+    public virtual void recalculateDMG()
+    {
+        switch (mainAttribiute)
+        {
+            case MainAtribiute.Strength:
+                finalDMG = strength;
+                break;
+            case MainAtribiute.Agility:
+                finalDMG = agility;
+                break;
+            case MainAtribiute.Inteligence:
+                finalDMG = inteligence;
+                break;
+            case MainAtribiute.Wisdom:
+                finalDMG = wisdom;
+                break;
+            case MainAtribiute.Charisma:
+                finalDMG = charisma;
+                break;
+            case MainAtribiute.Speed:
+                finalDMG = speed;
+                break;
+        }
+
+
     }
 
     // Get the enemy entity and add it to the list
@@ -224,18 +260,18 @@ public class EntityBase : MonoBehaviour {
             speed = _speed;
 
         if (_endurance != 0)
-            Endurance = _endurance;
+            endurance = _endurance;
 
         if (_charisma != 0)
-            Charisma = _charisma;
+            charisma = _charisma;
 
         if (_inteligance != 0)
-            Inteligence = _inteligance;
+            inteligence = _inteligance;
 
         if (_wisdom != 0)
-            Wisdom = _wisdom;
+            wisdom = _wisdom;
 
-        life = Endurance * 10;
+        life = endurance * 10;
         maxLife = life;
     }
 
