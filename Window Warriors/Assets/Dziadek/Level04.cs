@@ -114,49 +114,29 @@ public class Level04 : WindowBase {
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 50, 50, 50, 50).GetComponent<EntityBase>();
 					enemy.setEnemies(herosList);
 					enemiesList.Add(enemy);
-					if (currentState == windowState.minimized)
-					{
-						foreach (EntityBase boss in enemiesList)
-						{
-							boss.GetComponent<SpriteRenderer>().enabled = false;
-							boss.drawGUI = false;
-						}
-					}
-					sendEnemies();
-					doOnce = true;
 				}
 				else if (currentWave % 10 == 0)
 				{
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 25, 25, 25, 25).GetComponent<EntityBase>();
 					enemy.setEnemies(herosList);
 					enemiesList.Add(enemy);
-					if (currentState == windowState.minimized)
-					{
-						foreach (EntityBase boss in enemiesList)
-						{
-							boss.GetComponent<SpriteRenderer>().enabled = false;
-							boss.drawGUI = false;
-						}
-					}
-					sendEnemies();
-					doOnce = true;
 				}
 				else
 				{
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 15, 15, 15, 15).GetComponent<EntityBase>();
 					enemy.setEnemies(herosList);
 					enemiesList.Add(enemy);
-					if (currentState == windowState.minimized)
-					{
-						foreach (EntityBase boss in enemiesList)
-						{
-							boss.GetComponent<SpriteRenderer>().enabled = false;
-							boss.drawGUI = false;
-						}
-					}
-					sendEnemies();
-					doOnce = true;
 				}
+				if (currentState == windowState.minimized)
+				{
+					foreach (EntityBase boss in enemiesList)
+					{
+						boss.GetComponent<SpriteRenderer>().enabled = false;
+						boss.drawGUI = false;
+					}
+				}
+				sendEnemies();
+				doOnce = true;
 			}
 			/*
 			else if (currentWave == wavesToBeFinished)
