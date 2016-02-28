@@ -79,15 +79,15 @@ public class Level06 : WindowBase {
 
 				if (Time.time - lastTime > 5.0f)
 				{
-					if (currentWave % 5 == 0)
+					if (currentWave % 5 == 0 && currentWave >=5)
 					{
-						if (currentWave % 25 == 0)
+						if (currentWave % 25 == 0 && currentWave >=25)
 						{
 							enemy = entityFactory.initializeVampireKing(position + Vector3.right, 50, 50, 50, 50).GetComponent<EntityBase>();
 							enemy.setEnemies(herosList);
 							enemiesList.Add(enemy);
 						}
-						else if (currentWave % 10 == 0)
+						else if (currentWave % 10 == 0  && currentWave >=10)
 						{
 							enemy = entityFactory.initializeVampirePrince(position + Vector3.right, 25, 25, 25, 25).GetComponent<EntityBase>();
 							enemy.setEnemies(herosList);
