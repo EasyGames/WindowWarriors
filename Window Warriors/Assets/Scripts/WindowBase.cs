@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class WindowBase : MonoBehaviour {
 
     // Window event variables
+    public GameObject BlockBackground;
+    public float ratio = 1;
     public int addWaves { get; set; }
     public int currentWave { get; set; }
     public int wavesToBeFinished;
@@ -35,7 +37,7 @@ public class WindowBase : MonoBehaviour {
     public Vector3 maximizedSize = new Vector3(12.0f, 2.0f, 1.0f);
     Vector3 heroMinimized = new Vector3(0.1f, 0.1f, 0.1f);
     Vector3 heroMaximized = new Vector3(1.0f, 1.0f, 1.0f);
-    public enum windowState {minimized, maximized};
+    public enum windowState {minimized, maximized, fullScreen};
     public windowState currentState { get; set; }
     public MeshRenderer thisRenderer { get; set; }
     public PlaceMarker marker;
@@ -131,10 +133,33 @@ public class WindowBase : MonoBehaviour {
         {
             if (herosList[i] != null)
             {
-                herosList[i].gameObject.transform.parent.position = transform.position - Vector3.right * i * 1.2f - Vector3.right * 3 - Vector3.up * 0.8f;
+                herosList[i].gameObject.transform.parent.position = transform.position - Vector3.right * i * 1.2f*ratio - Vector3.right * 3*ratio - Vector3.up * 0.8f*ratio;
             }
         }
         sendEnemies();
+    }
+
+    public virtual void refreshEnemiesPositions()
+    {
+        for (int i = 0; i < enemiesList.Count; i++)
+        {
+            if (enemiesList[i] != null)
+            {
+                enemiesList[i].gameObject.transform.position = transform.position + Vector3.right * i * 1.2f * ratio + Vector3.right * 2 * ratio - Vector3.up * 0.8f * ratio;
+                enemiesList[i].GetComponent<EntityBase>().setWorldPos();
+            }
+        }
+    }
+
+    public virtual void refreshRewardPosition()
+    {
+        if (this.reward != null)
+        {
+            EntityBase rewardScript = reward.GetComponent<EntityBase>();
+            rewardScript.transform.position = (ratio > 1) ? transform.position - (Vector3.up*(transform.localScale.y/2))  : transform.parent.position + Vector3.up;
+            rewardScript.currentWindow = this;
+            rewardScript.setWorldPos();
+        }
     }
 
     // send the enemies from the enemies list to every hero on herosList and vice versa
@@ -152,9 +177,21 @@ public class WindowBase : MonoBehaviour {
         }
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
-        this.GetComponent<Renderer>().material.color = Color.gray;
+        if (Input.GetMouseButtonUp(1))
+        {
+            if (currentState == windowState.maximized)
+            {
+                fullscreenMode();
+                currentState = windowState.fullScreen;
+            }
+            else if (currentState == windowState.fullScreen)
+            {
+                fullscreenModeExit();
+                currentState = windowState.maximized;
+            }
+        }
     }
 
     // A function to check if there is any enemy left alive
@@ -332,6 +369,75 @@ public class WindowBase : MonoBehaviour {
         }
     }
 
+    public virtual void fullscreenMode()
+    {
+        float leftSiteOftheScreen = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, -Camera.main.transform.position.z)).x;
+        float rightSiteOfTheScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, -Camera.main.transform.position.z)).x;
+        Vector3 middleOfTheScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, -Camera.main.transform.position.z-1));
+        float fullScreenSize = rightSiteOfTheScreen - leftSiteOftheScreen;
+        ratio = fullScreenSize / transform.localScale.x;
+        transform.localScale = new Vector3(fullScreenSize, transform.localScale.y * ratio, 1);
+        transform.position = middleOfTheScreen;
+        BlockBackground.SetActive(true);
+        for (int i = 0; i < herosList.Count; i++)
+        {
+            if (herosList[i] != null)
+            {
+                Vector3 heroLocalScale = herosList[i].gameObject.transform.parent.localScale;
+                herosList[i].gameObject.transform.parent.localScale = new Vector3(heroLocalScale.x * ratio, heroLocalScale.y * ratio, heroLocalScale.z);
+            }
+        }
+        for (int i = 0; i < enemiesList.Count; i++)
+        {
+            if (enemiesList[i] != null)
+            {
+                print("Enemy: " + enemiesList[i].name);
+                Vector3 enemyLocalScale = enemiesList[i].gameObject.transform.localScale;
+                enemiesList[i].gameObject.transform.localScale = new Vector3(enemyLocalScale.x * ratio, enemyLocalScale.y * ratio, enemyLocalScale.z);
+            }
+        }
+        if (reward != null)
+        {
+            Vector3 rewardLocalScale = reward.transform.localScale;
+            reward.transform.localScale = new Vector3(rewardLocalScale.x * ratio, rewardLocalScale.y * ratio, rewardLocalScale.z);
+        }
+        refreshHeroPositions();
+        refreshEnemiesPositions();
+        refreshRewardPosition();
+    }
+
+    public virtual void fullscreenModeExit()
+    {
+        for (int i = 0; i < herosList.Count; i++)
+        {
+            if (herosList[i] != null)
+            {
+                Vector3 heroLocalScale = herosList[i].gameObject.transform.parent.localScale;
+                herosList[i].gameObject.transform.parent.localScale = new Vector3(heroLocalScale.x / ratio, heroLocalScale.y / ratio, heroLocalScale.z);
+            }
+        }
+        for (int i = 0; i < enemiesList.Count; i++)
+        {
+            if (enemiesList[i] != null)
+            {
+                Vector3 enemyLocalScale = enemiesList[i].gameObject.transform.localScale;
+                enemiesList[i].gameObject.transform.localScale = new Vector3(enemyLocalScale.x / ratio, enemyLocalScale.y / ratio, enemyLocalScale.z);
+            }
+        }
+        if (reward != null)
+        {
+            Vector3 rewardLocalScale = reward.transform.localScale;
+            reward.transform.localScale = new Vector3(rewardLocalScale.x / ratio, rewardLocalScale.y / ratio, rewardLocalScale.z);
+        }
+        transform.localScale = maximizedSize;
+        transform.position = marker.transform.position + Vector3.up * 2.0f + Vector3.right * 0.5f;
+        BlockBackground.SetActive(false);
+        ratio = 1;
+        refreshHeroPositions();
+        refreshEnemiesPositions();
+        refreshRewardPosition();
+    }
+
     // minimizing the window
     public virtual void minimizeWindow()
     {
@@ -386,6 +492,24 @@ public class WindowBase : MonoBehaviour {
             marker.ChangeSize = false;
             doOnlyOnce = true;
         }
+    }
+
+    public virtual void spawnEssentials(EntityBase spawnedEntity)
+    {
+        spawnedEntity.setEnemies(herosList);
+        spawnedEntity.transform.localScale = new Vector3(enemy.transform.localScale.x * ratio, enemy.transform.localScale.y * ratio, enemy.transform.localScale.z);
+        spawnedEntity.currentWindow = this;
+        spawnedEntity.setWorldPos();
+        enemiesList.Add(enemy);
+    }
+
+    public virtual void spawnReward(GameObject reward)
+    {
+        EntityBase rewardScript = reward.GetComponent<EntityBase>();
+        rewardScript.transform.localScale = new Vector3(rewardScript.transform.localScale.x * ratio, rewardScript.transform.localScale.y * ratio, rewardScript.transform.localScale.z);
+        rewardScript.currentWindow = this;
+        rewardScript.setWorldPos();
+        refreshRewardPosition();
     }
 
     public virtual void OnGUI()

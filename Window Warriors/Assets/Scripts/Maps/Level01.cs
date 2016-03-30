@@ -16,7 +16,6 @@ public class Level01 : WindowBase {
 
     void OnMouseUp()
     {
-        print("click");
         if (!inventoryWindow.isInventoryFull())
         {
             GameObject inventorySlot;
@@ -83,18 +82,15 @@ public class Level01 : WindowBase {
                     {
                         case 3:
                             enemy = entityFactory.initializeSlime(position).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            spawnEssentials(enemy);
                             goto case 2;
                         case 2:
                             enemy = entityFactory.initializeSlime(position + Vector3.right).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            spawnEssentials(enemy);
                             goto case 1;
                         case 1:
                             enemy = entityFactory.initializeSlime(position + Vector3.right * 2).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            spawnEssentials(enemy);
                             break;
                     }
                     if (currentState == windowState.minimized)
@@ -105,6 +101,7 @@ public class Level01 : WindowBase {
                             enemy.drawGUI = false;
                         }
                     }
+                    refreshEnemiesPositions();
                     sendEnemies();
                     doOnce = true;
                 }

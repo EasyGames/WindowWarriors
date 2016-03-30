@@ -84,21 +84,18 @@ public class Level06 : WindowBase {
 						if (currentWave % 25 == 0 && currentWave >=25)
 						{
 							enemy = entityFactory.initializeVampireKing(position + Vector3.right, 50, 50, 50, 50).GetComponent<EntityBase>();
-							enemy.setEnemies(herosList);
-							enemiesList.Add(enemy);
-						}
+                            spawnEssentials(enemy);
+                        }
 						else if (currentWave % 10 == 0  && currentWave >=10)
 						{
 							enemy = entityFactory.initializeVampirePrince(position + Vector3.right, 25, 25, 25, 25).GetComponent<EntityBase>();
-							enemy.setEnemies(herosList);
-							enemiesList.Add(enemy);
-						}
+                            spawnEssentials(enemy);
+                        }
 						else
 						{
 							enemy = entityFactory.initializeVampire(position + Vector3.right, 15, 15, 15, 15).GetComponent<EntityBase>();
-							enemy.setEnemies(herosList);
-							enemiesList.Add(enemy);
-						}
+                            spawnEssentials(enemy);
+                        }
 					}
 					else if(currentWave <= 2)
 					{
@@ -138,7 +135,8 @@ public class Level06 : WindowBase {
 						}
 					}
 					sendEnemies();
-					doOnce = true;
+                    refreshEnemiesPositions();
+                    doOnce = true;
 				}
 			}
 			else
@@ -192,14 +190,12 @@ public class Level06 : WindowBase {
 		{
 		case 2:
 			enemy = entityFactory.initializeZombie(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		case 1:
 			enemy = entityFactory.initializeHeadlessZombie(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void LowLevelSpawn ()
@@ -209,14 +205,12 @@ public class Level06 : WindowBase {
 		{
 		case 2:
 			enemy = entityFactory.initializeZombie(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 1;
+                spawnEssentials(enemy);
+                goto case 1;
 		case 1:
 			enemy = entityFactory.initializeHeadlessZombie(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void LowMediumLevelSpawn ()
@@ -225,19 +219,16 @@ public class Level06 : WindowBase {
 		{
 		case 3:
 			enemy = entityFactory.initializeZombie(position).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 2;
+                spawnEssentials(enemy);
+                goto case 2;
 		case 2:
 			enemy = entityFactory.initializeZombie(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 1;
+                spawnEssentials(enemy);
+                goto case 1;
 		case 1:
 			enemy = entityFactory.initializeHeadlessZombie(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void MediumLevelSpawn ()
@@ -246,19 +237,16 @@ public class Level06 : WindowBase {
 		{
 		case 3:
 			enemy = entityFactory.initializeSkeletonArcher(position).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 2;
+                spawnEssentials(enemy);
+                goto case 2;
 		case 2:
 			enemy = entityFactory.initializeSkeletonWarrior(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 1;
+                spawnEssentials(enemy);
+                goto case 1;
 		case 1:
 			enemy = entityFactory.initializeSkeleton(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void MediumHighLevelSpawn ()
@@ -268,19 +256,16 @@ public class Level06 : WindowBase {
 		{
 		case 3:
 			enemy = entityFactory.initializeSkeletonArcher(position).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 2;
+                spawnEssentials(enemy);
+                goto case 2;
 		case 2:
 			enemy = entityFactory.initializeSkeletonWarrior(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 1;
+                spawnEssentials(enemy);
+                goto case 1;
 		case 1:
 			enemy = entityFactory.initializeSkeleton(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void HighLevelSpawn ()
@@ -290,34 +275,28 @@ public class Level06 : WindowBase {
 		{
 		case 3:
 			enemy = entityFactory.initializeNecromancer(position).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 2;
+                spawnEssentials(enemy);
+                goto case 2;
 		case 2:
 			enemy = entityFactory.initializeMummy(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			goto case 1;
+                spawnEssentials(enemy);
+                goto case 1;
 		case 1:
 			enemy = entityFactory.initializeGhost(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-			break;
+                spawnEssentials(enemy);
+                break;
 		}
 	}
 	private void HighHighLevelSpawn ()
 	{
-			enemy = entityFactory.initializeDarkWizard(position).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
+		enemy = entityFactory.initializeDarkWizard(position).GetComponent<EntityBase>();
+        spawnEssentials(enemy);
 
-			enemy = entityFactory.initializePharaoh(position + Vector3.right).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
+        enemy = entityFactory.initializePharaoh(position + Vector3.right).GetComponent<EntityBase>();
+        spawnEssentials(enemy);
 
-			enemy = entityFactory.initializeSpirit(position + Vector3.right * 2).GetComponent<EntityBase>();
-			enemy.setEnemies(herosList);
-			enemiesList.Add(enemy);
-	}
+        enemy = entityFactory.initializeSpirit(position + Vector3.right * 2).GetComponent<EntityBase>();
+        spawnEssentials(enemy);
+    }
 
 }

@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System;
+
+
+
+public enum monsterToSpawn { Slime, Zombie, Bat, Dragon, DarkWizzard, Death }
 public class EntityFactory : MonoBehaviour {
+
 
     // prefab list, add new prefab for each new monster
     public GameObject SlimePrefab;
@@ -24,10 +31,10 @@ public class EntityFactory : MonoBehaviour {
 	public GameObject VampireKingPrefab;
 	public GameObject VampirePrincePrefab;
 	public GameObject ZombiePrefab;
-    
-    // initialize function, coppy for each next prefab, but change the variable names and get right script
+
     public GameObject initializeSlime(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
     {
+        
         GameObject initializedSlime;
         Slime slimeScript;
         initializedSlime = (GameObject)Instantiate(SlimePrefab, pos, Quaternion.identity);
@@ -37,7 +44,8 @@ public class EntityFactory : MonoBehaviour {
         return initializedSlime;
     }
 
-	public GameObject initializeZombie(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [SpawnFunctionAssembly(monsterToSpawn.Zombie)]
+    public GameObject initializeZombie(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedZombie;
 		ZombieScript zombieScript;
@@ -48,7 +56,7 @@ public class EntityFactory : MonoBehaviour {
 		return initializedZombie;
 	}
 
-	public GameObject initializeVampirePrince(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    public GameObject initializeVampirePrince(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedVampirePrince;
 		VampirePrinceScript vampirePrinceScript;
@@ -59,7 +67,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedVampirePrince;
 	}
 
-	public GameObject initializeVampireKing(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeVampireKing(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedVampireKing;
 		VampireKingScript vampireKingScript;
@@ -70,7 +79,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedVampireKing;
 	}
 
-	public GameObject initializeVampire(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeVampire(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedVampire;
 		VampireScript vampireScript;
@@ -81,7 +91,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedVampire;
 	}
 
-	public GameObject initializeSpirit(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeSpirit(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedSpirit;
 		SpiritScript spiritScript;
@@ -92,7 +103,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedSpirit;
 	}
 
-	public GameObject initializeSkeletonWarrior(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeSkeletonWarrior(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedSkeletonWarrior;
 		SkeletonWarriorScript skeletonWarriorScript;
@@ -103,7 +115,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedSkeletonWarrior;
 	}
 
-	public GameObject initializeSkeletonArcher(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeSkeletonArcher(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedSkeletonArcher;
 		SkeletonArcherScript skeletonArcherScript;
@@ -114,7 +127,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedSkeletonArcher;
 	}
 
-	public GameObject initializeSkeleton(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeSkeleton(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedSkeleton;
 		SkeletonScript skeletonScript;
@@ -125,7 +139,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedSkeleton;
 	}
 
-	public GameObject initializeNecromancer(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeNecromancer(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedNecromancer;
 		NecromancerScript necromancerScript;
@@ -136,7 +151,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedNecromancer;
 	}
 
-	public GameObject initializePharaoh(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializePharaoh(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedPharaoh;
 		PharaohScript pharaohScript;
@@ -147,7 +163,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedPharaoh;
 	}
 
-	public GameObject initializeMummy(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeMummy(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedMummy;
 		MummyScript mummyScript;
@@ -158,7 +175,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedMummy;
 	}
 
-	public GameObject initializeHeadlessZombie(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeHeadlessZombie(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedHeadlessZombie;
 		HeadlessZombieScript headlessZombieScript;
@@ -169,7 +187,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedHeadlessZombie;
 	}
 
-	public GameObject initializeGhost(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeGhost(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedGhost;
 		GhostScript ghostScript;
@@ -180,7 +199,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedGhost;
 	}
 
-	public GameObject initializeDarkWizard(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [SpawnFunctionAssembly(monsterToSpawn.DarkWizzard)]
+    public GameObject initializeDarkWizard(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedDarkWizard;
 		DarkWizardScript darkWizardScript;
@@ -191,7 +211,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedDarkWizard;
 	}
 
-	public GameObject initializeDeathMonster(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [SpawnFunctionAssembly(monsterToSpawn.Death)]
+    public GameObject initializeDeathMonster(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedDeathMonster;
 		DeathMonsterScript deathMonsterScript;
@@ -202,7 +223,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedDeathMonster;
 	}
 
-	public GameObject initializeRingStealer(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [ExposeToEditor]
+    public GameObject initializeRingStealer(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedRingStealer;
 		Slime slimeScript;
@@ -213,7 +235,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedRingStealer;
 	}
 
-	public GameObject initializeBat(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [SpawnFunctionAssembly(monsterToSpawn.Bat)]
+    public GameObject initializeBat(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedBat;
 		BatScript batScript;
@@ -224,7 +247,8 @@ public class EntityFactory : MonoBehaviour {
 		return initializedBat;
 	}
 
-	public GameObject initializeDragon(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
+    [SpawnFunctionAssembly(monsterToSpawn.Dragon)]
+    public GameObject initializeDragon(Vector3 pos, int strenght = 0, int agility = 0, int speed =0, int endurance =0, int charisma=0, int inteligence =0, int wisdom =0)
 	{
 		GameObject initializedDragon;
 		DragonScript dragonScript;
@@ -235,6 +259,7 @@ public class EntityFactory : MonoBehaviour {
 		return initializedDragon;
 	}
 
+    [ExposeToEditor]
     public GameObject initializeChest(Vector3 pos)
     {
         GameObject initializedChest;

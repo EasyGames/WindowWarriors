@@ -52,6 +52,7 @@ public class DragScript : MonoBehaviour {
         mainDock.addHero(heroScript);
         previousWidowBaseScript = mainDock;
         currentWindowBaseScript = mainDock;
+        heroScript.currentWindow = currentWindowBaseScript;
 
         //Rendering the same sprite
         childRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -104,7 +105,7 @@ public class DragScript : MonoBehaviour {
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && transform.localScale.x <=1 )
         {
             currentWindowBaseScript.removeHero(heroScript);
             previousWidowBaseScript = currentWindowBaseScript;
@@ -146,6 +147,7 @@ public class DragScript : MonoBehaviour {
                     if (indexToAddHero == -1)
                     {
                         previousWidowBaseScript.addHero(heroScript);
+                        heroScript.currentWindow = previousWidowBaseScript;
                     }
                     else
                     {
@@ -155,7 +157,8 @@ public class DragScript : MonoBehaviour {
                         currentWindowBaseScript.herosList[indexToAddHero] = heroScript;
                         currentWindowBaseScript.refreshHeroPositions();
                         mainDock.addHero(previousHero);
-                        print("index to add" + indexToAddHero);
+                        heroScript.currentWindow = currentWindowBaseScript;
+                        previousHero.currentWindow = mainDock;
                     }
                 }
                 else
@@ -216,6 +219,7 @@ public class DragScript : MonoBehaviour {
                     else
                     {
                         currentWindowBaseScript.addHero(heroScript);
+                        heroScript.currentWindow = currentWindowBaseScript;
                     }
                     if (currentWindowBaseScript == previousWidowBaseScript)
                     {
@@ -230,6 +234,7 @@ public class DragScript : MonoBehaviour {
                             }
                     }
                     currentWindowBaseScript.addHero(heroScript);
+                    heroScript.currentWindow = currentWindowBaseScript;
                     heroScript.setEnemies(currentWindowBaseScript.getEnemies());
                 }
 
@@ -237,6 +242,7 @@ public class DragScript : MonoBehaviour {
             else
             {
                 previousWidowBaseScript.addHero(heroScript);
+                heroScript.currentWindow = previousWidowBaseScript;
             }
         }
 

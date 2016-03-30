@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Level05 : WindowBase {
 
@@ -78,10 +79,9 @@ public class Level05 : WindowBase {
 				if (Time.time - lastTime > 5.0f)
 				{
 					enemy = entityFactory.initializeDragon(position, 30 + wavesToBeFinished*2, 20 + wavesToBeFinished*2, 30 + wavesToBeFinished*2, 30 + wavesToBeFinished*2).GetComponent<EntityBase>();
-					enemy.setEnemies(herosList);
-					enemiesList.Add(enemy);
+                    spawnEssentials(enemy);
 
-					if (currentState == windowState.minimized)
+                    if (currentState == windowState.minimized)
 					{
 						foreach (EntityBase boss in enemiesList)
 						{
@@ -89,6 +89,7 @@ public class Level05 : WindowBase {
 							boss.drawGUI = false;
 						}
 					}
+                    refreshEnemiesPositions();
 					sendEnemies();
 					doOnce = true;
 				}
@@ -99,8 +100,9 @@ public class Level05 : WindowBase {
 				wavesToBeFinished = 0;
 				windowCleared = true;
 				reward = entityFactory.initializeChest(marker.transform.position + Vector3.up);
+                spawnReward(reward);
 
-			}
+            }
 		}
 
 

@@ -59,7 +59,8 @@ public class MonsterManager : WindowBase {
         windowCleared = false;
         currentWave = 0;
         rewardAmount = 50;
-}
+        
+    }
 
     public override void FixedUpdate()
     {
@@ -78,22 +79,20 @@ public class MonsterManager : WindowBase {
 
                 if (Time.time - lastTime > 5.0f)
                 {
+                    position = new Vector3(transform.position.x + 1 *ratio, transform.position.y - 1 * 0.8f*ratio,(ratio> 1)? -1.1f:0);
                     switch (random)
                     {
                         case 3:
                             enemy = entityFactory.initializeSlime(position).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            spawnEssentials(enemy);
                             goto case 2;
                         case 2:
-                            enemy = entityFactory.initializeSlime(position + Vector3.right).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            enemy = entityFactory.initializeSlime(position + Vector3.right*ratio).GetComponent<EntityBase>();
+                            spawnEssentials(enemy);
                             goto case 1;
                         case 1:
-                            enemy = entityFactory.initializeSlime(position + Vector3.right * 2).GetComponent<EntityBase>();
-                            enemy.setEnemies(herosList);
-                            enemiesList.Add(enemy);
+                            enemy = entityFactory.initializeSlime(position + Vector3.right * 2 *ratio).GetComponent<EntityBase>();
+                            spawnEssentials(enemy);
                             break;
                     }
                     if (currentState == windowState.minimized)
@@ -104,15 +103,30 @@ public class MonsterManager : WindowBase {
                             enemy.drawGUI = false;
                         }
                     }
+                    refreshEnemiesPositions();
                     sendEnemies();
                     doOnce = true;
                 }
             }
             else
             {
+                Vector3 rewardPosition;
+                if (currentState == windowState.fullScreen)
+                {
+                    rewardPosition = new Vector3(transform.position.x, transform.position.y - 1 * ratio, (ratio > 1) ? -1.1f : 0);
+                }
+                else
+                {
+                    rewardPosition = transform.parent.position + Vector3.up;
+                }
                 wavesToBeFinished = 0;
                 windowCleared = true;
-                reward = entityFactory.initializeChest(marker.transform.position + Vector3.up);
+                reward = entityFactory.initializeChest(rewardPosition);
+                EntityBase rewardScript = reward.GetComponent<EntityBase>();
+                rewardScript.transform.localScale = new Vector3(rewardScript.transform.localScale.x * ratio, rewardScript.transform.localScale.y * ratio, rewardScript.transform.localScale.z);
+                rewardScript.currentWindow = this;
+                rewardScript.setWorldPos();
+                rewardScript.currentWindow = this;
                 
             }
         }
@@ -134,5 +148,7 @@ public class MonsterManager : WindowBase {
             previousTime = Time.time;
         }
     }
+
+
 
 }

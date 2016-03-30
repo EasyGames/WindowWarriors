@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ArcherScript : HeroBase {
 
+    float ratio;
     bool fighting = false;
     public GameObject arrowGO;
     GameObject thisArrow;
@@ -20,10 +21,12 @@ public class ArcherScript : HeroBase {
     {
         if (isThereEnemy())
         {
+            ratio = transform.parent.localScale.x;
             targetForArrow = enemiesList[0].transform.position + Vector3.up * 0.4f;
             fightEnemies();
             destroyArrow();
-            thisArrow = (GameObject)Instantiate(arrowGO, transform.position + Vector3.right * 2.0f + Vector3.up * 0.4f, Quaternion.identity);
+            thisArrow = (GameObject)Instantiate(arrowGO, transform.position + Vector3.right * 2.0f*ratio + Vector3.up * 0.4f*ratio, Quaternion.identity);
+            thisArrow.transform.localScale = new Vector3(thisArrow.transform.localScale.x * ratio, thisArrow.transform.localScale.y * ratio, thisArrow.transform.localScale.z);
             if (!drawGUI)
             {
                 thisArrow.GetComponent<SpriteRenderer>().enabled = false;
@@ -57,7 +60,7 @@ public class ArcherScript : HeroBase {
             }
             if (thisArrow.transform.position.x <= targetForArrow.x)
             {
-                thisArrow.transform.position += Vector3.right * Time.deltaTime * arrowSpeed * speed/10;
+                thisArrow.transform.position += Vector3.right * Time.deltaTime * arrowSpeed * speed/10*ratio;
             }
             else
             {

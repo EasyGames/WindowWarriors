@@ -7,7 +7,6 @@ public class PlaceMarker : MonoBehaviour {
 
     void OnMouseDown()
     {
-        print("Click");
         ChangeSize = true;
         this.GetComponent<Renderer>().material.color = Color.gray;
     }

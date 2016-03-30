@@ -33,6 +33,7 @@ public class HeroMenu: WindowBase{
     // Use this for initialization
     public override void Start()
     {
+        print("Reszta z dzielenia 1%5: " + 0 % 5);
         panel.SetActive(false);
         screenEndPos = new Vector3(Screen.width,0,30);
         screenEndPos = Camera.main.ScreenToWorldPoint(screenEndPos);
@@ -241,5 +242,12 @@ public class HeroMenu: WindowBase{
             }
         }
         return null;
+    }
+
+    public override void fullscreenMode()
+    {
+    }
+    public override void fullscreenModeExit()
+    {
     }
 }

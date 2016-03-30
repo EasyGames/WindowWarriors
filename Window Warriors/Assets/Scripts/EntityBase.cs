@@ -38,6 +38,7 @@ public class EntityBase : MonoBehaviour {
     public int lifeHeight { get; set; }
     public int lifeWidth { get; set; }
     public bool drawGUI { get; set; }
+    public WindowBase currentWindow;
 
     //Base Stats
     public int Level = 1;
@@ -70,7 +71,6 @@ public class EntityBase : MonoBehaviour {
         drawGUI = true;
         XP = 0;
         floatingTextsGO = new List<GameObject>();
-        worldPos = transform.position + Vector3.right;
         life = endurance * 10;
         maxLife = life;
         XPTreshold = (Level == 1) ? 100 : (100 * (2 ^ (Level - 1)));
@@ -91,12 +91,17 @@ public class EntityBase : MonoBehaviour {
                 floatingTextsGO[i].GetComponent<MeshRenderer>().enabled = false;
             }
             floatingTextsGO[i].transform.position += Vector3.up * 0.02f;
-            if (floatingTextsGO[i].transform.position.y >= transform.position.y + 2.0f)
+            if (floatingTextsGO[i].transform.position.y >= transform.position.y + 1.8f*currentWindow.ratio)
             {
                 Destroy(floatingTextsGO[i]);
                 floatingTextsGO.RemoveAt(i);
             }
         }
+    }
+
+    public void setWorldPos()
+    {
+     worldPos = new Vector3(transform.position.x + 1 * currentWindow.ratio, transform.position.y, transform.position.z);
     }
 
     // Destroy all of the floating texts
@@ -116,7 +121,7 @@ public class EntityBase : MonoBehaviour {
     public void GetXP(int XPToGet)
     {
         XP += XPToGet;
-        if (XP >= XPTreshold)
+        while (XP >= XPTreshold)
         {
             LevelUp();
             refreshHealth();
@@ -241,7 +246,7 @@ public class EntityBase : MonoBehaviour {
     // Destroy this game object
     public virtual void destroyMe()
     {
-        Destroy(textGameObject);
+        clearFloatingTexts();
         Destroy(this.gameObject);
     }
 
@@ -285,15 +290,15 @@ public class EntityBase : MonoBehaviour {
         {
             if (life > maxLife / 2)
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth, -life / maxLife * lifeHeight), Color.green);
+                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
             }
             else if (life > maxLife / 5)
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth, -life / maxLife * lifeHeight), orange);
+                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
             }
             else
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth, -life / maxLife * lifeHeight), Color.red);
+                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
             }
 
         }
@@ -336,7 +341,7 @@ public class EntityBase : MonoBehaviour {
         floatingText.text = textToDisplay;
         floatingText.fontSize = 120;
         textGameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        textGameObject.transform.position = transform.position + Vector3.up * 1.5f;
+        textGameObject.transform.position = new Vector3 (transform.position.x + currentWindow.ratio/2, transform.position.y + 1 * 1.5f * currentWindow.ratio,transform.position.z) ;
 
         floatingTextsGO.Add(textGameObject);
     }

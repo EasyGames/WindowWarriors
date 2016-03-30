@@ -81,19 +81,16 @@ public class Level04 : WindowBase {
 					{
 					case 3:
 						enemy = entityFactory.initializeSlime(position).GetComponent<EntityBase>();
-						enemy.setEnemies(herosList);
-						enemiesList.Add(enemy);
-						goto case 2;
+                        spawnEssentials(enemy);
+                        goto case 2;
 					case 2:
 						enemy = entityFactory.initializeSlime(position + Vector3.right).GetComponent<EntityBase>();
-						enemy.setEnemies(herosList);
-						enemiesList.Add(enemy);
-						goto case 1;
+                        spawnEssentials(enemy);
+                        goto case 1;
 					case 1:
 						enemy = entityFactory.initializeBat(position + Vector3.right * 2).GetComponent<EntityBase>();
-						enemy.setEnemies(herosList);
-						enemiesList.Add(enemy);
-						break;
+                        spawnEssentials(enemy);
+                        break;
 					}
 					if (currentState == windowState.minimized)
 					{
@@ -103,6 +100,7 @@ public class Level04 : WindowBase {
 							enemy.drawGUI = false;
 						}
 					}
+                    refreshEnemiesPositions();
 					sendEnemies();
 					doOnce = true;
 				}

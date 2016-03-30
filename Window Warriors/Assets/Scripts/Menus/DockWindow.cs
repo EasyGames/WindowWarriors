@@ -13,6 +13,7 @@ public class DockWindow : WindowBase {
     }
     public override void Start()
     {
+        
     }
 
     // Update is called once per frame
