@@ -29,6 +29,10 @@ public class HeroBase : EntityBase
         animator = GetComponent<Animator>();
         currentState = state.Walking;
     }
+    public void Start()
+    {
+        drawHealthbar(false);
+    }
 
     public override void recalculateDMG()
     {
@@ -55,15 +59,15 @@ public class HeroBase : EntityBase
         {
             if (life > maxLife / 2)
             {
-                GUIDrawRect(new Rect(targetPos.x- lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
+               // GUIDrawRect(new Rect(targetPos.x- lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
             }
             else if (life > maxLife / 5)
             {
-                GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
+               // GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
             }
             else
             {
-                GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
+               // GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
             }
 
         }
@@ -71,6 +75,7 @@ public class HeroBase : EntityBase
 
     public override void FixedUpdate()
     {
+        updateHealthBar();
         base.FixedUpdate();
         if (enemiesList.Count > 0 && currentState != state.Idle && currentState != state.Dead)
         {

@@ -107,7 +107,6 @@ public class ShadowScript : MonoBehaviour {
 
         displayStats = !displayStats;
         panel.SetActive(displayStats);
-        print("change value");
 
 
         for (int i = 1; i < currentEquipment.Length; i++)

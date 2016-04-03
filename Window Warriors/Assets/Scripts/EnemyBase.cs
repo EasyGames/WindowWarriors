@@ -13,10 +13,12 @@ public class EnemyBase : EntityBase {
     void Start()
     {
         animator = GetComponent<Animator>();
+        drawHealthbar(true);
     }
 
     void Update()
     {
+        updateHealthBar();
         if (life <= 0)
         {
             life = 0;

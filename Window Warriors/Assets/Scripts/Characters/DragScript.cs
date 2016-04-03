@@ -260,18 +260,17 @@ public class DragScript : MonoBehaviour {
                 if (hit.collider.tag == "Window" && hit.collider.GetComponent<WindowBase>() != mainDock)
                 {
                     Vector3 positionDifference = hit.collider.transform.position - hit.point;
-
-                    if (positionDifference.x >= 4.4f && currentPosition != heroPosition.position3)
+                    if (positionDifference.x >= 4.4f * hit.collider.GetComponent<WindowBase>().ratio && currentPosition != heroPosition.position3)
                     {
                         currentPosition = heroPosition.position3;
                         indexToAddHero = 2;
                     }
-                    else if(positionDifference.x >= 3.2f && positionDifference.x < 4.4f && currentPosition != heroPosition.position3)
+                    else if(positionDifference.x >= 3.2f * hit.collider.GetComponent<WindowBase>().ratio && positionDifference.x < 4.4f * hit.collider.GetComponent<WindowBase>().ratio && currentPosition != heroPosition.position3)
                     {
                         currentPosition = heroPosition.position2;
                         indexToAddHero = 1;
                     }
-                    else if(positionDifference.x < 3.2f && currentPosition != heroPosition.position3)
+                    else if(positionDifference.x < 3.2f * hit.collider.GetComponent<WindowBase>().ratio && currentPosition != heroPosition.position3)
                     {
                         currentPosition = heroPosition.position1;
                         indexToAddHero = 0;

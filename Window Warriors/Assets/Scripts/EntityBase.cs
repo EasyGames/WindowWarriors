@@ -32,6 +32,8 @@ public class EntityBase : MonoBehaviour {
     EntityBase enemyScript;
 
     // Health bar
+    public bool right { get; set; }
+    public GameObject healthBar { get; set; }
     public Color orange { get; set; }
     public Vector3 targetPos { get; set; }
     public Vector3 worldPos { get; set; }
@@ -75,6 +77,53 @@ public class EntityBase : MonoBehaviour {
         maxLife = life;
         XPTreshold = (Level == 1) ? 100 : (100 * (2 ^ (Level - 1)));
         recalculateDMG();
+    }
+
+    public virtual void drawHealthbar(bool healthBarOnTheRight)
+    {
+        Texture2D health = new Texture2D(10, 100);
+        for (int y =0; y < health.height; y++)
+        {
+            for (int x=0; x < health.width; x++)
+            {
+                health.SetPixel(x, y, Color.white);
+            }
+        }
+        health.filterMode = FilterMode.Point;
+        health.Apply();
+        right = healthBarOnTheRight;
+        healthBar = new GameObject();
+        healthBar.name = "Health Bar";
+        healthBar.transform.position = (right) ? transform.position + (Vector3.right * 1.1f) : transform.position - (Vector3.right * 0.2f);
+        healthBar.AddComponent<SpriteRenderer>().color = Color.green;
+        healthBar.GetComponent<SpriteRenderer>().sprite = Sprite.Create(health, new Rect(0, 0, 10, 100), new Vector2(0, 0));
+        healthBar.transform.parent = transform;
+    }
+
+    public virtual void updateHealthBar()
+    {
+        if (currentWindow != null && drawGUI == true)
+        {
+            healthBar.GetComponent<SpriteRenderer>().enabled = true;
+            healthBar.transform.position = (right) ? transform.position + (Vector3.right * 1.1f * currentWindow.ratio) : transform.position - (Vector3.right * 0.2f * currentWindow.ratio);
+            healthBar.transform.localScale = new Vector3(1.0f , 1.0f *  (life / maxLife), 1.0f);
+            if (life > maxLife / 2)
+            {
+                healthBar.GetComponent<SpriteRenderer>().color = Color.green;
+            }
+            else if (life > maxLife / 5)
+            {
+                healthBar.GetComponent<SpriteRenderer>().color = orange;
+            }
+            else
+            {
+                healthBar.GetComponent<SpriteRenderer>().color = Color.red;
+            }
+        }
+        else
+        {
+            healthBar.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     public virtual void FixedUpdate()
@@ -290,15 +339,15 @@ public class EntityBase : MonoBehaviour {
         {
             if (life > maxLife / 2)
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
+                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
             }
             else if (life > maxLife / 5)
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
+                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
             }
             else
             {
-                GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
+                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
             }
 
         }
@@ -333,12 +382,14 @@ public class EntityBase : MonoBehaviour {
         textGameObject = new GameObject();
         textGameObject.name = "Floating Text";
         floatingText = textGameObject.AddComponent<TextMesh>();
-        floatingText.color = colorToUse;
         if (!drawGUI)
         {
             textGameObject.GetComponent<MeshRenderer>().enabled = false;
         }
         floatingText.text = textToDisplay;
+        floatingText.font = Resources.Load<Font>("Font/Arial/ARIAL");
+        floatingText.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/3d Text Material");
+        floatingText.GetComponent<MeshRenderer>().material.color = colorToUse;
         floatingText.fontSize = 120;
         textGameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         textGameObject.transform.position = new Vector3 (transform.position.x + currentWindow.ratio/2, transform.position.y + 1 * 1.5f * currentWindow.ratio,transform.position.z) ;

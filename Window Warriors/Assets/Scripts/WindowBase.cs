@@ -23,6 +23,7 @@ public class WindowBase : MonoBehaviour {
     public bool showTimer { get; set; } 
     public float raidTime { get; set; }
     public float lastRaidTime { get; set; }
+    public GameObject windowCounter;
 
     // Money manager Script
     public MoneyManager moneyManager;
@@ -57,6 +58,7 @@ public class WindowBase : MonoBehaviour {
     public Vector3 position { get; set;}
     public EntityBase enemy { get; set;}
     public List<EntityBase> enemiesList { get; set;}
+    public Vector3 initialWindowPosition;
 
     public virtual void Start () {
         addWaves = 2;
@@ -73,6 +75,7 @@ public class WindowBase : MonoBehaviour {
         isHeroResting = false;
 
         transform.position = marker.transform.position + Vector3.up * 2.0f + Vector3.right * 0.5f;
+        initialWindowPosition = transform.position;
         // Get this object mesh renderer
         thisRenderer = GetComponent<MeshRenderer>();
 
@@ -145,8 +148,16 @@ public class WindowBase : MonoBehaviour {
         {
             if (enemiesList[i] != null)
             {
-                enemiesList[i].gameObject.transform.position = transform.position + Vector3.right * i * 1.2f * ratio + Vector3.right * 2 * ratio - Vector3.up * 0.8f * ratio;
-                enemiesList[i].GetComponent<EntityBase>().setWorldPos();
+                if (currentState != windowState.minimized)
+                {
+                    enemiesList[i].gameObject.transform.position = transform.position + Vector3.right * i * 1.2f * ratio + Vector3.right * 2 * ratio - Vector3.up * 0.8f * ratio;
+                    enemiesList[i].GetComponent<EntityBase>().setWorldPos();
+                }
+                else
+                {
+                    enemiesList[i].gameObject.transform.position = initialWindowPosition + Vector3.right * i * 1.2f * ratio + Vector3.right * 2 * ratio - Vector3.up * 0.8f * ratio;
+                    enemiesList[i].GetComponent<EntityBase>().setWorldPos();
+                }
             }
         }
     }
@@ -270,6 +281,22 @@ public class WindowBase : MonoBehaviour {
     // Update is called once per frame
     public virtual void FixedUpdate ()
     {
+        windowCounter.transform.position = transform.position + Vector3.up * 1.5f*ratio - Vector3.forward * 0.01f*ratio- Vector3.right*0.5f;
+        if (wavesToBeFinished > 0)
+        {
+            windowCounter.GetComponent<MeshRenderer>().enabled = true;
+            windowCounter.GetComponent<TextMesh>().text = currentWave + "/" + wavesToBeFinished;
+        }
+        else
+        {
+            windowCounter.GetComponent<MeshRenderer>().enabled = false;
+        }
+        if (showTimer)
+        {
+            windowCounter.GetComponent<MeshRenderer>().enabled = true;
+            windowCounter.GetComponent<TextMesh>().text = ((int)raidTime + 1 - ((int)Time.time - (int)lastRaidTime)).ToString();
+        }
+
         if (herosList.Count > 0)
         {
             if (isThereHeroWalking() && !isHeroResting)
@@ -391,7 +418,6 @@ public class WindowBase : MonoBehaviour {
         {
             if (enemiesList[i] != null)
             {
-                print("Enemy: " + enemiesList[i].name);
                 Vector3 enemyLocalScale = enemiesList[i].gameObject.transform.localScale;
                 enemiesList[i].gameObject.transform.localScale = new Vector3(enemyLocalScale.x * ratio, enemyLocalScale.y * ratio, enemyLocalScale.z);
             }
@@ -514,13 +540,15 @@ public class WindowBase : MonoBehaviour {
 
     public virtual void OnGUI()
     {
+
+        // BOXES!!
         if (wavesToBeFinished > 0)
         {
-            GUI.Box(new Rect(targetPos.x - (rectSize.x/2), Screen.height - targetPos.y - WindowHeight - 21, 50, 20),currentWave + "/" + wavesToBeFinished);
+         //   GUI.Box(new Rect(targetPos.x - (rectSize.x/2), Screen.height - targetPos.y - WindowHeight - 21, 50, 20),currentWave + "/" + wavesToBeFinished);
         }
         if (showTimer)
         {
-            GUI.Box(new Rect(targetPos.x - (rectSize.x / 2), Screen.height - targetPos.y - WindowHeight - 21, 50, 20), ((int)raidTime + 1 -((int)Time.time - (int)lastRaidTime)).ToString());
+         //   GUI.Box(new Rect(targetPos.x - (rectSize.x / 2), Screen.height - targetPos.y - WindowHeight - 21, 50, 20), ((int)raidTime + 1 -((int)Time.time - (int)lastRaidTime)).ToString());
         }
     }
 }

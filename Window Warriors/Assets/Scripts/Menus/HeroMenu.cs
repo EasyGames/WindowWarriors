@@ -32,8 +32,7 @@ public class HeroMenu: WindowBase{
 
     // Use this for initialization
     public override void Start()
-    {
-        print("Reszta z dzielenia 1%5: " + 0 % 5);
+    { 
         panel.SetActive(false);
         screenEndPos = new Vector3(Screen.width,0,30);
         screenEndPos = Camera.main.ScreenToWorldPoint(screenEndPos);
@@ -215,7 +214,6 @@ public class HeroMenu: WindowBase{
 
     GameObject createShadow(EntityBase hero)
     {
-        print("creating shadow");
         GameObject tempGO = new GameObject();
         tempGO.name = hero.transform.parent.name;
         tempGO.AddComponent<SpriteRenderer>().sprite = hero.GetComponent<SpriteRenderer>().sprite;

@@ -96,11 +96,22 @@ public class Level05 : WindowBase {
 			}
 			else
 			{
-				//print ("jednak tutaj");
-				wavesToBeFinished = 0;
+                Vector3 rewardPosition;
+                if (currentState == windowState.fullScreen)
+                {
+                    rewardPosition = new Vector3(transform.position.x, transform.position.y - 1 * ratio, (ratio > 1) ? -1.1f : 0);
+                }
+                else
+                {
+                    rewardPosition = transform.parent.position + Vector3.up;
+                }
+                wavesToBeFinished = 0;
 				windowCleared = true;
-				reward = entityFactory.initializeChest(marker.transform.position + Vector3.up);
-                spawnReward(reward);
+                reward = entityFactory.initializeChest(rewardPosition);
+                EntityBase rewardScript = reward.GetComponent<EntityBase>();
+                rewardScript.transform.localScale = new Vector3(rewardScript.transform.localScale.x * ratio, rewardScript.transform.localScale.y * ratio, rewardScript.transform.localScale.z);
+                rewardScript.currentWindow = this;
+                rewardScript.setWorldPos();
 
             }
 		}
