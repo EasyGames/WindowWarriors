@@ -11,10 +11,25 @@ public class ArcherScript : HeroBase {
     bool targetOnce = true;
     Vector3 targetForArrow;
 
+    //skills
+    STargetEnemy_AimedShot aimedShoot;
+    float aimedShootLastTime;
+
     public override void Awake()
     {
         base.Awake();
+        aimedShoot = new STargetEnemy_AimedShot();
         arrowDelegate = destroyArrow;
+    }
+
+    public override void fightEnemies()
+    {
+        if (Time.time - aimedShootLastTime >= aimedShoot.SkillCooldown)
+        {
+            aimedShoot.aimedShotAtFirstEnemy(this);
+            aimedShootLastTime = Time.time;
+        }
+        base.fightEnemies();
     }
 
     void shootArrow()

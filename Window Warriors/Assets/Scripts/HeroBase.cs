@@ -29,6 +29,7 @@ public class HeroBase : EntityBase
         animator = GetComponent<Animator>();
         currentState = state.Walking;
     }
+
     public void Start()
     {
         drawHealthbar(false);
@@ -79,6 +80,7 @@ public class HeroBase : EntityBase
         base.FixedUpdate();
         if (enemiesList.Count > 0 && currentState != state.Idle && currentState != state.Dead)
         {
+            print("Enter Idle");
             currentState = state.Idle;
         }
         if (enemiesList.Count > 0 && currentState == state.Idle && isThereEnemy() && Time.time - lastTime > 4.0f*10/speed)

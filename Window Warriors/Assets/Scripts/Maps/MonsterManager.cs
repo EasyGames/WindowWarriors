@@ -45,7 +45,7 @@ public class MonsterManager : WindowBase {
 
             if (awardHero)
             {
-                heroMenu.unlockHero("Ragnar", "archer");
+                heroMenu.unlockHero("Ragnar", "rogue");
                 awardHero = false;
             }
         }

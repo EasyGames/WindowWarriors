@@ -223,15 +223,6 @@ public class DragScript : MonoBehaviour {
                     }
                     if (currentWindowBaseScript == previousWidowBaseScript)
                     {
-                            if (previousWidowBaseScript.herosList.Count <= 0)
-                            {
-                                previousWidowBaseScript.doOnce = true;
-                                previousWidowBaseScript.currentWave = 0;
-                            }
-                            else
-                            {
-                                previousWidowBaseScript.currentWave = 1;
-                            }
                     }
                     currentWindowBaseScript.addHero(heroScript);
                     heroScript.currentWindow = currentWindowBaseScript;

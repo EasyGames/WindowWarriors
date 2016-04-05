@@ -3,15 +3,26 @@ using System.Collections;
 
 public class WizzardScript : HeroBase {
 
-        /* This code is left for special ability
-        * 
-        foreach (EntityBase enemy in enemiesList)
-        {
-            if(enemy.GetComponent<EntityBase>().life > 0)
-                enemy.takeDamageFromEnemy(Dmg);
-        }
-        */
+    STargetEnemy_Fireball fireball;
+    float fireballLastUsed;
 
+    public override void Awake()
+    {
+        fireball = new STargetEnemy_Fireball();
+        base.Awake();
+    }
+    public override void fightEnemies()
+    {
+        if(Time.time - fireballLastUsed >= fireball.SkillCooldown)
+        {
+            fireball.fireball(this);
+            fireballLastUsed = Time.time;
+        }
+        else
+        {
+            base.fightEnemies();
+        }
+    }
     public override void LevelUp()
     {
         

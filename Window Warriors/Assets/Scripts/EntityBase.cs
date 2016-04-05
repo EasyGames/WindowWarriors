@@ -58,7 +58,9 @@ public class EntityBase : MonoBehaviour {
     public int inteligence = 10;
     public int wisdom = 10;
     public int criticalChance { get; set; }
+    public int criticalBuff { get; set; }
     public int dodgeChance { get; set; }
+    public int dodgeBuff { get; set; }
 
     // Floating Text
     public GameObject textGameObject { get; set; }
@@ -290,6 +292,7 @@ public class EntityBase : MonoBehaviour {
                 }
             }
         }
+        recalculateDMG();
     }
 
     // Destroy this game object
@@ -392,7 +395,7 @@ public class EntityBase : MonoBehaviour {
         floatingText.GetComponent<MeshRenderer>().material.color = colorToUse;
         floatingText.fontSize = 120;
         textGameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        textGameObject.transform.position = new Vector3 (transform.position.x + currentWindow.ratio/2, transform.position.y + 1 * 1.5f * currentWindow.ratio,transform.position.z) ;
+        textGameObject.transform.position = new Vector3 (transform.position.x + currentWindow.ratio/2 - textToDisplay.Length*0.2f, transform.position.y + 1 * 1.5f * currentWindow.ratio,transform.position.z) ;
 
         floatingTextsGO.Add(textGameObject);
     }
@@ -416,6 +419,7 @@ public class EntityBase : MonoBehaviour {
         int x;
         x = Random.Range(1, 101);
         dodgeChance = (agility >= Dmg) ? 16 : 16 * agility / Dmg;
+        dodgeChance += dodgeBuff;
         if (dodgeChance >= x)
         {
             drawFloatingText("Dodge!", Color.green);

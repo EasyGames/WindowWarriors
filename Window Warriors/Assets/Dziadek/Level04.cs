@@ -110,21 +110,18 @@ public class Level04 : WindowBase {
 				if (currentWave % 25 == 0)
 				{
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 50, 50, 50, 50).GetComponent<EntityBase>();
-					enemy.setEnemies(herosList);
-					enemiesList.Add(enemy);
-				}
+                    spawnEssentials(enemy);
+                }
 				else if (currentWave % 10 == 0)
 				{
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 25, 25, 25, 25).GetComponent<EntityBase>();
-					enemy.setEnemies(herosList);
-					enemiesList.Add(enemy);
+                    spawnEssentials(enemy); ;
 				}
 				else
 				{
 					enemy = entityFactory.initializeRingStealer(position + Vector3.right, 15, 15, 15, 15).GetComponent<EntityBase>();
-					enemy.setEnemies(herosList);
-					enemiesList.Add(enemy);
-				}
+                    spawnEssentials(enemy);
+                }
 				if (currentState == windowState.minimized)
 				{
 					foreach (EntityBase boss in enemiesList)
