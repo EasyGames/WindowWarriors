@@ -130,7 +130,8 @@ public class Level04 : WindowBase {
 						boss.drawGUI = false;
 					}
 				}
-				sendEnemies();
+                refreshEnemiesPositions();
+                sendEnemies();
 				doOnce = true;
 			}
 			/*
