@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class STargetEnemy_Fireball : MonoBehaviour {
+public class STargetEnemy_Fireball : SOffensive {
 
-    public float SkillCooldown = 30.0f;
-
-    public void fireball(EntityBase userCharacter)
+    public STargetEnemy_Fireball()
     {
-        print("Fireball!");
-        userCharacter.drawFloatingText("Fireball!", Color.yellow);
-        foreach(EntityBase enemy in userCharacter.enemiesList)
+        mySkillMechanic = SkillMechanic.AoE;
+        SkillCooldown = 30.0f;
+    }
+
+    public override void useSkill(EntityBase user)
+    {
+        user.drawFloatingText("Fireball!", Color.yellow);
+        foreach (EntityBase enemy in user.enemiesList)
         {
-            enemy.takeDamageFromEnemy(userCharacter.finalDMG *3);
+            enemy.takeDamageFromEnemy(user.finalDMG * 3);
         }
-        print(userCharacter.finalDMG);
+        base.useSkill(user);
     }
 }

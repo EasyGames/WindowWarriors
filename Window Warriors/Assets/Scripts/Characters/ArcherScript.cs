@@ -17,19 +17,11 @@ public class ArcherScript : HeroBase {
 
     public override void Awake()
     {
+        myOffenseSkills.Add(new STargetEnemy_AimedShot());
+        myOffenseSkills.Add(new STargetEnemy_Fireball());
         base.Awake();
         aimedShoot = new STargetEnemy_AimedShot();
         arrowDelegate = destroyArrow;
-    }
-
-    public override void fightEnemies()
-    {
-        if (Time.time - aimedShootLastTime >= aimedShoot.SkillCooldown)
-        {
-            aimedShoot.aimedShotAtFirstEnemy(this);
-            aimedShootLastTime = Time.time;
-        }
-        base.fightEnemies();
     }
 
     void shootArrow()

@@ -50,30 +50,6 @@ public class HeroBase : EntityBase
         }
     }
 
-    public override void OnGUI()
-    {
-        worldPos = transform.position - Vector3.right*0.1f*currentWindow.ratio;
-        lifeHeight = Screen.height / 32;
-        lifeWidth = lifeHeight / 8;
-        targetPos = Camera.main.WorldToScreenPoint(worldPos);
-        if (life > 0 && drawGUI)
-        {
-            if (life > maxLife / 2)
-            {
-               // GUIDrawRect(new Rect(targetPos.x- lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
-            }
-            else if (life > maxLife / 5)
-            {
-               // GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
-            }
-            else
-            {
-               // GUIDrawRect(new Rect(targetPos.x - lifeWidth, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
-            }
-
-        }
-    }
-
     public override void FixedUpdate()
     {
         updateHealthBar();

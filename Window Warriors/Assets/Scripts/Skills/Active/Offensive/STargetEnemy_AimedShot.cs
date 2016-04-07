@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class STargetEnemy_AimedShot : MonoBehaviour
+public class STargetEnemy_AimedShot : SOffensive
 {
-    public float SkillCooldown = 20.0f;
-
-    public void aimedShotAtFirstEnemy(EntityBase userCharacter)
+    public STargetEnemy_AimedShot()
     {
-        print("Aimed Shoot!");
-        userCharacter.finalDMG *= 2;
-        userCharacter.drawFloatingText("AIMED SHOOT!", Color.blue);
-        print(userCharacter.finalDMG);
+        mySkillMechanic = SkillMechanic.Single;
+        SkillCooldown = 20.0f;
+
+    }
+    public override void useSkill(EntityBase user)
+    {  
+        user.dealDamageToEnemy(user.finalDMG*2,user.enemiesList[0]);
+        user.drawFloatingText("AIMED SHOOT!", Color.blue);
+        base.useSkill(user);
     }
 }

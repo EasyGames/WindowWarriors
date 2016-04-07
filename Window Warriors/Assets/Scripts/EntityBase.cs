@@ -13,7 +13,7 @@ public class EntityBase : MonoBehaviour {
     public enum MainAtribiute {Strength, Agility, Inteligence, Wisdom, Charisma, Speed };
     public MainAtribiute mainAttribiute;
 
-    public int finalDMG { get; set; }
+    public int finalDMG;
 
     // Archer arrow delegate
     public delegate void ArrowDelegate();
@@ -67,6 +67,8 @@ public class EntityBase : MonoBehaviour {
     TextMesh floatingText { get; set; }
     RectTransform canvasTransform { get; set; }
     List<GameObject> floatingTextsGO { get; set; }
+
+    public List<SOffensive> myOffenseSkills;
 
     public virtual void Awake()
     {
@@ -273,28 +275,6 @@ public class EntityBase : MonoBehaviour {
         return false;
     }
 
-    // Standard Fight script, causes the hero to attack the first enemy in line
-    public virtual void fightEnemies()
-    {
-        if (enemiesList.Count > 0)
-        {
-            if (isThereEnemy())
-            {
-                // All game entities must inherit Entity base script
-                enemyScript = enemiesList[0];
-                if (enemyScript.life > 0)
-                {
-                    dealDamageToEnemy(finalDMG, enemyScript);
-                    if (enemyScript.life <= 0)
-                    {
-                        enemiesList.RemoveAt(0);
-                    }
-                }
-            }
-        }
-        recalculateDMG();
-    }
-
     // Destroy this game object
     public virtual void destroyMe()
     {
@@ -330,53 +310,6 @@ public class EntityBase : MonoBehaviour {
 
         life = endurance * 10;
         maxLife = life;
-    }
-
-    // Drawing the health bar
-    public virtual void OnGUI()
-    {
-        lifeHeight = Screen.height / 32;
-        lifeWidth = lifeHeight / 10;
-        targetPos = Camera.main.WorldToScreenPoint(worldPos);
-        if (life > 0 && drawGUI)
-        {
-            if (life > maxLife / 2)
-            {
-                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.green);
-            }
-            else if (life > maxLife / 5)
-            {
-                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), orange);
-            }
-            else
-            {
-                //GUIDrawRect(new Rect(targetPos.x, Screen.height - targetPos.y, lifeWidth * currentWindow.ratio, -life / maxLife * lifeHeight * currentWindow.ratio), Color.red);
-            }
-
-        }
-    }
-
-    // Function to draw any colored rectangle on the UI andd only on the UI
-    private static Texture2D _staticRectTexture;
-    private static GUIStyle _staticRectStyle;
-    public static void GUIDrawRect(Rect position, Color color)
-    {
-        if (_staticRectTexture == null)
-        {
-            _staticRectTexture = new Texture2D(1, 1);
-        }
-
-        if (_staticRectStyle == null)
-        {
-            _staticRectStyle = new GUIStyle();
-        }
-
-        _staticRectTexture.SetPixel(0, 0, color);
-        _staticRectTexture.Apply();
-
-        _staticRectStyle.normal.background = _staticRectTexture;
-
-        GUI.Box(position, GUIContent.none, _staticRectStyle);
     }
 
     // Draws floating text over the character
@@ -428,6 +361,61 @@ public class EntityBase : MonoBehaviour {
         {
             drawFloatingText(Dmg.ToString(), Color.red);
             life -= Dmg;
+        }
+    }
+
+    // Standard Fight script, causes the hero to attack the first enemy in line
+    public virtual void fightEnemies()
+    {
+        if (enemiesList.Count > 0)
+        {
+            if (isThereEnemy())
+            {
+                if (isThereAnySkillAvailable())
+                {
+                    useFirstAvailableSkill();
+                }
+                else
+                {
+                    enemyScript = enemiesList[0];
+                    if (enemyScript.life > 0)
+                    {
+                        dealDamageToEnemy(finalDMG, enemyScript);
+                        if (enemyScript.life <= 0)
+                        {
+                            enemiesList.RemoveAt(0);
+                        }
+                    }
+                }
+            }
+        }
+        recalculateDMG();
+    }
+
+    public virtual bool isThereAnySkillAvailable()
+    {
+        if (myOffenseSkills.Count > 0)
+        {
+            foreach (SOffensive skill in myOffenseSkills)
+            {
+                if (Time.time - skill.SkillLastUsed > skill.SkillCooldown)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public virtual void useFirstAvailableSkill()
+    {
+        for (int s = 0; s< myOffenseSkills.Count; s++)
+        {
+            if (Time.time - myOffenseSkills[s].SkillLastUsed > myOffenseSkills[s].SkillCooldown)
+            {
+                myOffenseSkills[s].useSkill(this);
+                return;
+            }
         }
     }
 }
