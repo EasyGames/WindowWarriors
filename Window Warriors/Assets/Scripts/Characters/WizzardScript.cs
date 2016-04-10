@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using Scripts;
 
 public class WizzardScript : HeroBase {
 
     public override void Awake()
     {
-        myOffenseSkills.Add(new STargetEnemy_Fireball());
         base.Awake();
+        targetingSkill = new STargetEnemy_TargetFirstPosition();
+        myOffenseSkills.Add(new STargetEnemy_BasicAttack());
+        myOffenseSkills.Add(new STargetEnemy_Fireball());
     }
 
     public override void LevelUp()

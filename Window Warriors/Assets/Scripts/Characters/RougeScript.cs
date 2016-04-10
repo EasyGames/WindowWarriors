@@ -10,6 +10,8 @@ public class RougeScript : HeroBase {
     {
         evasion = new STargetSelf_Evasion();
         base.Awake();
+        targetingSkill = new STargetEnemy_TargetFirstPosition();
+        myOffenseSkills.Add(new STargetEnemy_BasicAttack());
     }
 
     public override void FixedUpdate()

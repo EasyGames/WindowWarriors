@@ -1,26 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
+using Scripts;
+using System.Collections.Generic;
 
 public class ArcherScript : HeroBase {
 
+    public STargetEnemy_AimedShot aimedShoot;
     float ratio;
     bool fighting = false;
     public GameObject arrowGO;
     GameObject thisArrow;
     public float arrowSpeed;
-    bool targetOnce = true;
     Vector3 targetForArrow;
-
-    //skills
-    STargetEnemy_AimedShot aimedShoot;
-    float aimedShootLastTime;
 
     public override void Awake()
     {
-        myOffenseSkills.Add(new STargetEnemy_AimedShot());
-        myOffenseSkills.Add(new STargetEnemy_Fireball());
         base.Awake();
-        aimedShoot = new STargetEnemy_AimedShot();
+        targetingSkill = new STargetEnemy_TargetSecondPosition();
+        myOffenseSkills.Add(new STargetEnemy_BasicAttack());
+        myOffenseSkills.Add(new STargetEnemy_AimedShot());
         arrowDelegate = destroyArrow;
     }
 
@@ -30,7 +27,6 @@ public class ArcherScript : HeroBase {
         {
             ratio = transform.parent.localScale.x;
             targetForArrow = enemiesList[0].transform.position + Vector3.up * 0.4f;
-            fightEnemies();
             destroyArrow();
             thisArrow = (GameObject)Instantiate(arrowGO, transform.position + Vector3.right * 2.0f*ratio + Vector3.up * 0.4f*ratio, Quaternion.identity);
             thisArrow.transform.localScale = new Vector3(thisArrow.transform.localScale.x * ratio, thisArrow.transform.localScale.y * ratio, thisArrow.transform.localScale.z);

@@ -6,7 +6,6 @@ public class Level06 : WindowBase {
 	public EntityFactory entityFactory;
 
 	float lastTime;
-	float life = 100.0f;
 	int random;
 	float previousTime;
 	bool awardHero = true;

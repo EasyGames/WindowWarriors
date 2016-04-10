@@ -8,7 +8,6 @@ public class Level05 : WindowBase {
 
 
 	float lastTime;
-	float life = 100.0f;
 	int random;
 	float previousTime;
 

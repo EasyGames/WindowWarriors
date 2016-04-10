@@ -7,7 +7,9 @@ public class WarriorScript : HeroBase {
 
     public override void Awake()
     {
-        base.Awake(); 
+        base.Awake();
+        targetingSkill = new STargetEnemy_TargetFirstPosition();
+        myOffenseSkills.Add(new STargetEnemy_BasicAttack());
     }
 
     public override void LevelUp()
@@ -26,11 +28,5 @@ public class WarriorScript : HeroBase {
             charisma++;
         }
         base.LevelUp();
-    }
-
-    public override void dealDamageToEnemy(int Dmg, EntityBase _entityScript)
-    {
-        base.dealDamageToEnemy(Dmg, _entityScript);
-       // animator.Play("Slash");
     }
 }

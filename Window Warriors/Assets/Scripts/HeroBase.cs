@@ -56,12 +56,11 @@ public class HeroBase : EntityBase
         base.FixedUpdate();
         if (enemiesList.Count > 0 && currentState != state.Idle && currentState != state.Dead)
         {
-            print("Enter Idle");
             currentState = state.Idle;
         }
-        if (enemiesList.Count > 0 && currentState == state.Idle && isThereEnemy() && Time.time - lastTime > 4.0f*10/speed)
+        if (enemiesList.Count > 0 && currentState == state.Idle && isThereEnemy() && Time.time - lastTime > actionSpeed)
         {
-            animator.SetTrigger("Attack");
+            fightEnemies();
             lastTime = Time.time;
         }
         if (enemiesList.Count == 0 && currentState != state.Walking && currentState != state.Dead)

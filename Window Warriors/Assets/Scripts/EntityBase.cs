@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Scripts;
 
 //Hero class
 public enum heroClass { All, Warrior, Archer, Mage, Monk, Rogue };
@@ -14,6 +15,9 @@ public class EntityBase : MonoBehaviour {
     public MainAtribiute mainAttribiute;
 
     public int finalDMG;
+    public int DamageToDeal;
+    public List<EntityBase> targetEnemy;
+    public int myPosition;
 
     // Archer arrow delegate
     public delegate void ArrowDelegate();
@@ -25,6 +29,8 @@ public class EntityBase : MonoBehaviour {
     // Animation
     public Animator animator { get; set; }
     public bool walking { get; set; }
+    public float animationMaxDuration { get; set; }
+    public float actionSpeed;
 
     // list of enemies
     public List<EntityBase> enemiesList = new List<EntityBase>();
@@ -69,6 +75,7 @@ public class EntityBase : MonoBehaviour {
     List<GameObject> floatingTextsGO { get; set; }
 
     public List<SOffensive> myOffenseSkills;
+    public SOffensive targetingSkill;
 
     public virtual void Awake()
     {
@@ -80,7 +87,27 @@ public class EntityBase : MonoBehaviour {
         life = endurance * 10;
         maxLife = life;
         XPTreshold = (Level == 1) ? 100 : (100 * (2 ^ (Level - 1)));
-        recalculateDMG();
+        targetEnemy = new List<EntityBase>();
+        recalculations();
+        updateSpeeds();
+        myOffenseSkills = new List<SOffensive>();
+    }
+
+    public void updateSpeeds()
+    {
+        actionSpeed = 4.0f * 10 / speed;
+
+        if (actionSpeed/2 > 2.0f)
+        {
+            animationMaxDuration = 2.0f;
+        }
+        else
+        {
+            animationMaxDuration = actionSpeed;
+        }
+        
+
+
     }
 
     public virtual void drawHealthbar(bool healthBarOnTheRight)
@@ -178,7 +205,7 @@ public class EntityBase : MonoBehaviour {
         {
             LevelUp();
             refreshHealth();
-            recalculateDMG();
+            recalculations();
             XPTreshold *= 2;
         }
     }
@@ -203,6 +230,11 @@ public class EntityBase : MonoBehaviour {
         }
     }
 
+    public virtual void recalculations()
+    {
+        recalculateDMG();
+        updateSpeeds();
+    }
     // Recalculate the damge
     public virtual void recalculateDMG()
     {
@@ -254,25 +286,34 @@ public class EntityBase : MonoBehaviour {
     // Checks if there is any enemy left alive
     public bool isThereEnemy()
     {
-        while (enemiesList.Count > 0)
+        bool result = false;
+        if (enemiesList.Count > 0)
         {
-            if (enemiesList[0] != null)
+            for (int index = 0; index < enemiesList.Count; index++)
             {
-                if (enemiesList[0].life > 0)
+                if (enemiesList[index] != null)
                 {
-                    return true;
+                    if (enemiesList[index].life > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        enemiesList.RemoveAt(index);
+                    }
                 }
                 else
                 {
-                    enemiesList.RemoveAt(0);
+                    enemiesList.RemoveAt(index);
                 }
             }
-            else
-            {
-                enemiesList.RemoveAt(0);
-            }
+
         }
-        return false;
+        if (enemiesList.Count <= 0)
+        {
+            result = false;
+        }
+        return result;
     }
 
     // Destroy this game object
@@ -334,16 +375,17 @@ public class EntityBase : MonoBehaviour {
     }
 
     // Deals damage to the enemy
-    public virtual void dealDamageToEnemy(int Dmg, EntityBase _entityScript)
+    public virtual void dealDamageToEnemy()
     {
-        int x;
-        x = Random.Range(1, 101);
-        criticalChance = (agility >= enemiesList[0].GetComponent<EntityBase>().agility*2) ? 16 : 8 * agility / enemiesList[0].GetComponent<EntityBase>().agility;
-        if (criticalChance >= x)
+        foreach (EntityBase target in targetEnemy)
         {
-            Dmg *= 2;
+            if (target != null)
+            {
+                print(target.name);
+                target.takeDamageFromEnemy(DamageToDeal);
+            }
         }
-        _entityScript.takeDamageFromEnemy(Dmg);
+        targetEnemy.Clear();
     }
 
     // Takes damage from the enemy
@@ -373,49 +415,47 @@ public class EntityBase : MonoBehaviour {
             {
                 if (isThereAnySkillAvailable())
                 {
-                    useFirstAvailableSkill();
-                }
-                else
-                {
-                    enemyScript = enemiesList[0];
-                    if (enemyScript.life > 0)
-                    {
-                        dealDamageToEnemy(finalDMG, enemyScript);
-                        if (enemyScript.life <= 0)
-                        {
-                            enemiesList.RemoveAt(0);
-                        }
-                    }
+                    targetingSkill.useSkill(this);
+                    useBestAvailableSkill();
                 }
             }
         }
-        recalculateDMG();
     }
 
-    public virtual bool isThereAnySkillAvailable()
+    bool isThereAnySkillAvailable()
     {
         if (myOffenseSkills.Count > 0)
         {
             foreach (SOffensive skill in myOffenseSkills)
             {
-                if (Time.time - skill.SkillLastUsed > skill.SkillCooldown)
+                if (skill != null)
                 {
-                    return true;
+                    if (Time.time - skill.SkillLastUsed > skill.SkillCooldown)
+                    {
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
 
-    public virtual void useFirstAvailableSkill()
+    void useBestAvailableSkill()
     {
+        List<SOffensive> tempList = new List<SOffensive>();
+        SkillComparer cpr = new SkillComparer();
         for (int s = 0; s< myOffenseSkills.Count; s++)
         {
-            if (Time.time - myOffenseSkills[s].SkillLastUsed > myOffenseSkills[s].SkillCooldown)
+            if (Time.time - myOffenseSkills[s].SkillLastUsed > myOffenseSkills[s].SkillCooldown && myOffenseSkills[s].skillLevel > 0)
             {
-                myOffenseSkills[s].useSkill(this);
-                return;
+                tempList.Add(myOffenseSkills[s]);
             }
         }
+        tempList.Sort(cpr);
+        foreach (SOffensive skill in tempList)
+        {
+            print(skill);
+        }
+        tempList[0].useSkill(this);
     }
 }

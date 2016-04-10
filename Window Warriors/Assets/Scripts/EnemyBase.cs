@@ -14,6 +14,7 @@ public class EnemyBase : EntityBase {
     {
         animator = GetComponent<Animator>();
         drawHealthbar(true);
+        animator.SetBool("Idle", true);
     }
 
     void Update()
@@ -44,7 +45,7 @@ public class EnemyBase : EntityBase {
                 }
                 giveXP = false;
             }
-            animator.SetTrigger("Death");
+            animator.SetTrigger("Dead");
 
         }
 
@@ -56,7 +57,7 @@ public class EnemyBase : EntityBase {
 
         if (Time.time - previosTime > 4.0f * 10 / speed && enemiesList.Count > 0 && isThereEnemy() && life > 0)
         {
-            dealDamageToEnemy(strength, enemiesList[0]);
+            fightEnemies();
             previosTime = Time.time;
         }
 

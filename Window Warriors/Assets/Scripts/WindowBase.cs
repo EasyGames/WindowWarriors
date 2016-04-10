@@ -137,6 +137,7 @@ public class WindowBase : MonoBehaviour {
             if (herosList[i] != null)
             {
                 herosList[i].gameObject.transform.parent.position = transform.position - Vector3.right * i * 1.2f*ratio - Vector3.right * 3*ratio - Vector3.up * 0.8f*ratio;
+                herosList[i].myPosition = i;
             }
         }
         sendEnemies();
@@ -527,6 +528,18 @@ public class WindowBase : MonoBehaviour {
         spawnedEntity.currentWindow = this;
         spawnedEntity.setWorldPos();
         enemiesList.Add(enemy);
+        switch (enemiesList.Count)
+        {
+            case 1:
+                enemy.myPosition = 0;
+                break;
+            case 2:
+                enemy.myPosition = 1;
+                break;
+            case 3:
+                enemy.myPosition = 2;
+                break;
+        }
     }
 
     public virtual void spawnReward(GameObject reward)

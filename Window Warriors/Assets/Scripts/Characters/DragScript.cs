@@ -301,6 +301,6 @@ public class DragScript : MonoBehaviour {
 
     public void recalcualteDMG()
     {
-        heroScript.recalculateDMG();
+        heroScript.recalculations();
     }
 }

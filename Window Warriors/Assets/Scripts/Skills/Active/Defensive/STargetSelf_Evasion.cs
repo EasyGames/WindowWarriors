@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class STargetSelf_Evasion : MonoBehaviour {
+public class STargetSelf_Evasion {
 
     public float SkillCooldown = 40.0f;
     public float SkillDuration = 10.0f;
@@ -12,7 +12,6 @@ public class STargetSelf_Evasion : MonoBehaviour {
 
     public void evasion(EntityBase userCharacter)
     {
-        print("Evasion On!");
         user = userCharacter;
         userCharacter.dodgeBuff += evasionbuff;
         userCharacter.drawFloatingText("Evasion on!", Color.green);
@@ -22,7 +21,6 @@ public class STargetSelf_Evasion : MonoBehaviour {
 
     public void evasionEnd(EntityBase userCharacter)
     {
-        print("Evasion Off!");
         active = false;
         userCharacter.dodgeBuff -= evasionbuff;
         user.drawFloatingText("Evasion off!", Color.red);

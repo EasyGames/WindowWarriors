@@ -8,7 +8,6 @@ public class Trollololo : HeroBase {
     public GameObject arrowGO;
     GameObject thisArrow;
     public float arrowSpeed;
-    bool targetOnce = true;
     Vector3 targetForArrow;
     public GameObject AtomOfAWESOME;
     GameObject boom;
@@ -36,14 +35,14 @@ public class Trollololo : HeroBase {
         }
     }
 
-    public override void dealDamageToEnemy(int Dmg, EntityBase _entityScript)
+    public override void dealDamageToEnemy()
     {
-        boom = (GameObject)Instantiate(AtomOfAWESOME, _entityScript.transform.position - Vector3.forward + Vector3.right- Vector3.up*0.5f, Quaternion.identity);
+        boom = (GameObject)Instantiate(AtomOfAWESOME, targetEnemy[0].transform.position - Vector3.forward + Vector3.right- Vector3.up*0.5f, Quaternion.identity);
         boomTime = Time.time;
         foreach (EntityBase enemy in enemiesList)
         {
             if(enemy.GetComponent<EntityBase>().life > 0)
-                enemy.takeDamageFromEnemy(Dmg);
+                enemy.takeDamageFromEnemy(DamageToDeal);
         }
     }
 
